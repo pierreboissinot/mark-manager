@@ -36,15 +36,17 @@ class Subject
     private $marks;
     
     /**
-     * @var Domain
+     * @var ArrayCollection
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Domain", inversedBy="subjects")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Domain", inversedBy="subjects")
+     * @ORM\JoinTable(name="subjects_domains")
      */
-    private $domain;
+    private $domains;
     
     public function __construct()
     {
         $this->marks = new ArrayCollection();
+        $this->domains = new ArrayCollection();
     }
     
     public function getId(): int
@@ -68,20 +70,20 @@ class Subject
         return $this->marks;
     }
     
-    public function setMarks(ArrayCollection $marks): Subject
+    public function setMarks(array $marks): Subject
     {
         $this->marks = $marks;
         return $this;
     }
     
-    public function getDomain(): Domain
+    public function getDomains(): ArrayCollection
     {
-        return $this->domain;
+        return $this->domains;
     }
     
-    public function setDomain(Domain $domain): Subject
+    public function setDomains(array $domains): Subject
     {
-        $this->domain = $domain;
+        $this->domains = $domains;
         return $this;
     }
     

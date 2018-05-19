@@ -31,7 +31,7 @@ class Domain
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Subject", mappedBy="domain")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Subject", mappedBy="domains")
      */
     private $subjects;
 

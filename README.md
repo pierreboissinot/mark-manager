@@ -1,0 +1,1 @@
+Etant donné que la métière Anglais vaut pour deux domaines, une matière appartient à un ou plusieurs domaines.
