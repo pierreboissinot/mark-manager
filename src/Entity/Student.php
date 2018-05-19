@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\StudentRepository")
@@ -35,7 +36,7 @@ class Student
     private $firstName;
     
     /**
-     * @var ArrayCollection
+     * @var PersistentCollection
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="student")
      */
@@ -68,7 +69,7 @@ class Student
         return $this;
     }
     
-    public function getMarks(): ArrayCollection
+    public function getMarks()
     {
         return $this->marks;
     }
@@ -79,9 +80,20 @@ class Student
         return $this;
     }
     
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
+    
+    public function __toString(): string
+    {
+        return $this->getFullName();
+    }
+    
+    public function getFullName()
+    {
+        return "{$this->getFirstName()} {$this->getLastName()}";
+    }
+    
     
 }

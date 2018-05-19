@@ -1,0 +1,48 @@
+easy_admin:
+    formats:
+      date:     'd/m/Y'
+      time:     'H:i'
+      datetime: 'd/m/Y H:i:s'
+    site_name: 'ENI <em style="font-size: 80%;">Notes manager</em>'
+    design:
+            brand_color: '#4c627b'
+            color_scheme: 'dark'
+    entities:
+        Domain:
+          class: App\Entity\Domain
+          label: 'Domaine'
+          list:
+            title: "Liste des %%entity_label%%"
+          show:
+            title: '%%entity_label%% (#%%entity_id%%)'
+          edit:
+            title: 'Editer la note'
+        Subject:
+          class: App\Entity\Subject
+          label: 'Matière'
+          list:
+            title: "Liste des %%entity_label%%"
+          show:
+            title: '%%entity_label%% (#%%entity_id%%)'
+        Mark:
+          class: App\Entity\Mark
+          label: 'Note'
+          list:
+            title: "Liste des %%entity_label%%"
+          show:
+            title: '%%entity_label%% (#%%entity_id%%)'
+        Student:
+          class: App\Entity\Student
+          label: 'Elève'
+          list:
+            title: "Liste des %%entity_label%%"
+            fields:
+              - { property: 'id', label: 'Identifiant' }
+              - { property: 'fullName', label: 'Prénom Nom' }
+          show:
+            title: '%%entity_label%% (#%%entity_id%%)'
+          edit:
+            title: "Editer l'élève"
+            fields:
+              - { property: 'firstName', label: 'Prénom' }
+              - { property: 'lastName', label: 'Nom' }

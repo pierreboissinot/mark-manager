@@ -46,12 +46,12 @@ class Mark
      */
     private $subject;
     
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
     
-    public function getValue(): float
+    public function getValue(): ?float
     {
         return $this->value;
     }
@@ -62,7 +62,7 @@ class Mark
         return $this;
     }
     
-    public function getLabel(): string
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -73,7 +73,7 @@ class Mark
         return $this;
     }
     
-    public function getStudent(): Student
+    public function getStudent(): ?Student
     {
         return $this->student;
     }
@@ -84,7 +84,7 @@ class Mark
         return $this;
     }
     
-    public function getSubject(): Subject
+    public function getSubject(): ?Subject
     {
         return $this->subject;
     }
@@ -94,7 +94,11 @@ class Mark
         $this->subject = $subject;
         return $this;
     }
-
+    
+    public function __toString(): string
+    {
+        return "Note {$this->getValue()}";
+    }
     
     
 }
