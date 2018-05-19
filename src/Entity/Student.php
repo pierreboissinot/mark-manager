@@ -26,6 +26,13 @@ class Student
      *
      * @ORM\Column(type="string")
      */
+    private $email;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
     private $lastName;
     
     /**
@@ -93,6 +100,16 @@ class Student
     public function getFullName()
     {
         return "{$this->getFirstName()} {$this->getLastName()}";
+    }
+    
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+    
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
     }
     
     

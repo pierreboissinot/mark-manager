@@ -22,8 +22,9 @@ class AppFixtures extends Fixture
 
     private function loadStudents(ObjectManager $manager)
     {
-        foreach ($this->getStudentData() as [$firstName, $lastName]) {
+        foreach ($this->getStudentData() as [$email, $firstName, $lastName]) {
             $student = new Student();
+            $student->setEmail($email);
             $student->setFirstName($firstName);
             $student->setLastName($lastName);
             $manager->persist($student);
@@ -74,9 +75,8 @@ class AppFixtures extends Fixture
     private function getStudentData(): array
     {
         return [
-            // $studentData = [$firstName, $lastName];
-            ['John', 'Doe'],
-            ['Jane', 'Bar'],
+            // $studentData = [$email, $firstName, $lastName];
+            ['pierre.boissinot2015@campus-eni.fr','John', 'Doe']
         ];
     }
     
@@ -458,12 +458,7 @@ class AppFixtures extends Fixture
                 12,
                 $this->getReference('Doe'),
                 $this->getReference('Soutenance finale')
-            ],
-            [
-                0.5,
-                $this->getReference('Bar'),
-                $this->getReference('Soutenance finale')
-            ],
+            ]
         ];
     }
 }
