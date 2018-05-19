@@ -49,6 +49,11 @@ class Student
      */
     private $marks;
     
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Summons", mappedBy="student")
+     */
+    private $summons;
+    
     public function __construct()
     {
         $this->marks = new ArrayCollection();

@@ -32,6 +32,11 @@ class Retake
      */
     private $mark;
     
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Summons", inversedBy="retakes")
+     */
+    private $summons;
+    
     public function __construct()
     {
         $this->deadline = new \DateTime();
