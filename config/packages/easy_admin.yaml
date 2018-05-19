@@ -48,3 +48,7 @@ easy_admin:
               - { property: 'firstName', label: 'Prénom' }
               - { property: 'lastName', label: 'Nom' }
               - { property: 'email', label: 'Email', type: 'email' }
+        InvalidMark:
+          class: App\Entity\mark
+          list:
+            dql_filter: 'entity.value < 7'
