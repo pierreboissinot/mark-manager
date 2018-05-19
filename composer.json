@@ -23,10 +23,10 @@
         "symfony/validator": "^4.0",
         "symfony/web-link": "^4.0",
         "symfony/webpack-encore-pack": "*",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "doctrine/doctrine-fixtures-bundle": "^3.0"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.0",
         "symfony/browser-kit": "^4.0",
         "symfony/css-selector": "^4.0",
         "symfony/debug-pack": "*",
