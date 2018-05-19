@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\MarkRepository")
@@ -45,6 +47,20 @@ class Mark
      * @ORM\ManyToOne(targetEntity="App\Entity\Subject", inversedBy="marks")
      */
     private $subject;
+    
+    /**
+     * @var PersistentCollection
+     *
+     * @ORM\OneToMany(targetEntity="App\Entity\Retake", mappedBy="mark")
+     */
+    private $retakes;
+    
+    
+    public function __construct()
+    {
+        $this->retakes = new ArrayCollection();
+    }
+    
     
     public function getId(): ?int
     {
