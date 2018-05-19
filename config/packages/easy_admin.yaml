@@ -49,7 +49,12 @@ easy_admin:
               - { property: 'lastName', label: 'Nom' }
               - { property: 'email', label: 'Email', type: 'email' }
         InvalidMark:
-          class: App\Entity\mark
+          class: App\Entity\Mark
           label: 'Notes invalides'
           list:
             dql_filter: 'entity.value < 7'
+            actions:
+              - { name: 'mark_retake', type: 'route', label: 'Rattraper' }
+        Retake:
+          class: App\Entity\Retake
+          label: 'Rattrapage'

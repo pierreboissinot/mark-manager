@@ -115,6 +115,16 @@ class Mark
     {
         return "Note {$this->getValue()}";
     }
+
+    public function getRetakes()
+    {
+        return $this->retakes;
+    }
+
+    public function setRetakes($retakes): void
+    {
+        $this->retakes = $retakes;
+    }
     
     
 }

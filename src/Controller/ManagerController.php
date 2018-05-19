@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Mark;
+use App\Entity\Retake;
 use App\Repository\DomainRepository;
 use App\Repository\MarkRepository;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,6 +34,23 @@ class ManagerController extends AbstractController
             'studentId' => $studentId,
             'domains' => $domains
         ]);
+    }
+    
+    /**
+     * @Route(path = "/admin/mark/retake", name = "mark_retake")
+     */
+    public function retake(Request $request, MarkRepository $markRepository)
+    {
+        $id = $request->query->get('id');
+        /** @var Mark $mark */
+        $mark = $markRepository->find($id);
+        $retake = new Retake();
+        $retake->setMark($mark);
+    
+        return $this->redirectToRoute('easyadmin', array(
+            'action' => 'new',
+            'entity' => 'Retake',
+        ));
     }
     
 }
