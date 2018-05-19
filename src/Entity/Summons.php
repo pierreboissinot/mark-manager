@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -33,7 +35,7 @@ class Summons
     private $content;
     
     /**
-     * @var array
+     * @var Collection
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Retake", mappedBy="summons")
      */
@@ -45,6 +47,12 @@ class Summons
      * @ORM\ManyToOne(targetEntity="App\Entity\Student", inversedBy="summons")
      */
     private $student;
+    
+    public function __construct()
+    {
+        $this->retakes = new ArrayCollection();
+    }
+    
     
     public function getId(): ?int
     {
@@ -73,15 +81,19 @@ class Summons
         return $this;
     }
     
-    public function getRetakes()
+    public function getRetakes(): ?Collection
     {
         return $this->retakes;
     }
     
-    public function setRetakes(array $retakes): ?Summons
+    public function addRetake(Retake $retake)
     {
-        $this->retakes = $retakes;
-        return $this;
+        $this->retakes->add($retake);
+    }
+    
+    public function removeRetake(Retake $retake)
+    {
+        $this->retakes->removeElement($retake);
     }
     
     public function getStudent(): ?Student
@@ -94,5 +106,11 @@ class Summons
         $this->student = $student;
         return $this;
     }
+    
+    public function __toString()
+    {
+        return "Convocation envoyée le {$this->getSentAt()->format('d/m/Y')} pour {$this->getStudent()->getFullName()}";
+    }
+    
     
 }
