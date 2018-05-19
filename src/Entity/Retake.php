@@ -70,5 +70,26 @@ class Retake
         return $this;
     }
     
+    /**
+     * @return mixed
+     */
+    public function getSummons()
+    {
+        return $this->summons;
+    }
+    
+    /**
+     * @param mixed $summons
+     */
+    public function setSummons($summons): void
+    {
+        $this->summons = $summons;
+    }
+    
+    public function __toString()
+    {
+        return "Rattrapage de {$this->getMark()->getSubject()} dû le {$this->getDeadline()->format('d/m/Y')}";
+    }
+    
     
 }
