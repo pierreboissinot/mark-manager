@@ -3,7 +3,30 @@
 {% block body_id 'manager_index' %}
 
 {% block main %}
-    home
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for student in students %}
+            <tr>
+                <td>{{ student.firstName }}</td>
+                <td>{{ student.lastName }}</td>
+                <td></td>
+            </tr>
+        {% else %}
+            Aucun étudiant trouvé
+        {% endfor %}
+
+        </tbody>
+    </table>
+
 {% endblock %}
 
 {% block sidebar %}
