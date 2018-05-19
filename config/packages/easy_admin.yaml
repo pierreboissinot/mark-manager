@@ -39,6 +39,7 @@ easy_admin:
             fields:
               - { property: 'id', label: 'Identifiant' }
               - { property: 'fullName', label: 'Prénom Nom' }
+              - { property: 'email', label: 'Email', type: 'email' }
           show:
             title: '%%entity_label%% (#%%entity_id%%)'
           edit:
@@ -46,3 +47,4 @@ easy_admin:
             fields:
               - { property: 'firstName', label: 'Prénom' }
               - { property: 'lastName', label: 'Nom' }
+              - { property: 'email', label: 'Email', type: 'email' }

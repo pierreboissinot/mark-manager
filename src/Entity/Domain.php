@@ -32,7 +32,7 @@ class Domain
     /**
      * @var PersistentCollection
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Subject", mappedBy="domains")
+     * @ORM\OneToMany(targetEntity="App\Entity\Subject", mappedBy="domain")
      */
     private $subjects;
 

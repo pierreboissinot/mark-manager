@@ -30,6 +30,13 @@ class Subject
     private $label;
     
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer")
+     */
+    private $coefficient;
+    
+    /**
      * @var PersistentCollection
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="subject")
@@ -37,17 +44,16 @@ class Subject
     private $marks;
     
     /**
-     * @var PersistentCollection
+     * @var Domain
      *
-     * @ORM\ManyToMany(targetEntity="App\Entity\Domain", inversedBy="subjects")
-     * @ORM\JoinTable(name="subjects_domains")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Domain", inversedBy="subjects")
      */
-    private $domains;
+    private $domain;
     
     public function __construct()
     {
         $this->marks = new ArrayCollection();
-        $this->domains = new ArrayCollection();
+        $this->domain = new ArrayCollection();
     }
     
     public function getId(): int
@@ -77,20 +83,31 @@ class Subject
         return $this;
     }
     
-    public function getDomains(): PersistentCollection
+    public function getDomain(): ?Domain
     {
-        return $this->domains;
+        return $this->domain;
     }
     
-    public function setDomains(array $domains): Subject
+    public function setDomain(Domain $domain): Subject
     {
-        $this->domains = $domains;
+        $this->domain = $domain;
         return $this;
     }
     
     public function __toString(): string
     {
         return "{$this->getLabel()}";
+    }
+    
+    public function getCoefficient(): ?int
+    {
+        return $this->coefficient;
+    }
+    
+
+    public function setCoefficient(int $coefficient): void
+    {
+        $this->coefficient = $coefficient;
     }
     
     

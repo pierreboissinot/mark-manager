@@ -48,10 +48,11 @@ class AppFixtures extends Fixture
     
     private function loadSubjects(ObjectManager $manager)
     {
-        foreach ($this->getSubjectData() as [$label, $domains]) {
+        foreach ($this->getSubjectData() as [$label, $coefficient, $domain]) {
             $subject = new Subject();
             $subject->setLabel($label);
-            $subject->setDomains($domains);
+            $subject->setDomain($domain);
+            $subject->setCoefficient($coefficient);
             $manager->persist($subject);
             $this->addReference($label, $subject);
         }
@@ -101,162 +102,203 @@ class AppFixtures extends Fixture
         return [
           [
               'Conduite de projet - Méthode Agile',
-              [$this->getReference('Domaine Management et Développement personnel')]
+              3,
+              $this->getReference('Domaine Management et Développement personnel')
           ],
             [
                 'Veille technologique et stratégique',
-                [$this->getReference('Domaine Management et Développement personnel')]
+                2,
+                $this->getReference('Domaine Management et Développement personnel')
             ],
             [
                 'Droit',
-                [$this->getReference('Domaine Management et Développement personnel')]
+                2,
+                $this->getReference('Domaine Management et Développement personnel')
             ],
             [
                 'Organisation des systèmes d\'information',
-                [$this->getReference('Domaine Management et Développement personnel')]
+                2,
+                $this->getReference('Domaine Management et Développement personnel')
             ],
             [
                 'Mathématiques - statistique',
-                [$this->getReference('Domaine Management et Développement personnel')]
+                2,
+                $this->getReference('Domaine Management et Développement personnel')
             ],
             [
                 'Gestion prévisionnelle',
-                [$this->getReference('Domaine Management et Développement personnel')]
+                2,
+                $this->getReference('Domaine Management et Développement personnel')
             ],
             [
                 'Communication',
-                [$this->getReference('Domaine Management et Développement personnel')]
+                2,
+                $this->getReference('Domaine Management et Développement personnel')
             ],
             [
                 'Anglais',
-                [
-                    $this->getReference('Domaine Management et Développement personnel'),
-                    $this->getReference('Domaine International')
-                ]
+                5,
+                $this->getReference('Domaine Management et Développement personnel')
             ],
             [
                 'Méthode UML',
-                [$this->getReference('Domaine Informatique')]
+                3,
+                $this->getReference('Domaine Informatique')
             ],
             [
                 'Informatique Décisionnelle',
-                [$this->getReference('Domaine Informatique')]
+                2,
+                $this->getReference('Domaine Informatique')
             ],
             [
                 'Développement JEE',
-                [$this->getReference('Domaine Système d\'information')]
+                6,
+                $this->getReference('Domaine Système d\'information')
             ],
             [
                 'Développement .Net',
-                [$this->getReference('Domaine Système d\'information')]
+                6,
+                $this->getReference('Domaine Système d\'information')
             ],
             [
                 'Développement Web + Application Mobile',
-                [$this->getReference('Domaine Système d\'information')]
+                5,
+                $this->getReference('Domaine Système d\'information')
             ],
             [
                 'Bases de données avancées',
-                [$this->getReference('Domaine Système d\'information')]
+                5,
+                $this->getReference('Domaine Système d\'information')
             ],
             [
                 'Projet dans la spécialité',
-                [$this->getReference('Domaine Système d\'information')]
+                4,
+                $this->getReference('Domaine Système d\'information')
             ],
             [
                 'Période en entreprise 1',
-                [$this->getReference('Domaine Période 1')]
+                1,
+                $this->getReference('Domaine Période 1')
             ],
             [
                 'Rapport 1',
-                [$this->getReference('Domaine Période 1')]
+                2,
+                $this->getReference('Domaine Période 1')
             ],
             [
                 'Soutenance 1',
-                [$this->getReference('Domaine Période 1')]
+                1,
+                $this->getReference('Domaine Période 1')
             ],
             [
                 'Management et Ingénierie de projet',
-                [$this->getReference('Domaine Management')]
+                4,
+                $this->getReference('Domaine Management')
             ],
             [
                 'Management des Hommes et efficacité personnelle',
-                [$this->getReference('Domaine Management')]
+                1,
+                $this->getReference('Domaine Management')
             ],
             [
                 'Conduite de réunion',
-                [$this->getReference('Domaine Management')]
+                2,
+                $this->getReference('Domaine Management')
             ],
             [
                 'Simulation Recrutement',
-                [$this->getReference('Domaine Management')]
+                1,
+                $this->getReference('Domaine Management')
             ],
             [
                 'Marketing',
-                [$this->getReference('Domaine Management')]
+                1,
+                $this->getReference('Domaine Management')
             ],
             [
                 'Ecoute client',
-                [$this->getReference('Domaine Management')]
+                1,
+                $this->getReference('Domaine Management')
             ],
             [
                 'Business Intelligence',
-                [$this->getReference('Domaine Management')]
+                2,
+                $this->getReference('Domaine Management')
             ],
             [
                 'Qualité Norme ISO',
-                [$this->getReference('Domaine Qualité')]
+                1,
+                $this->getReference('Domaine Qualité')
             ],
             [
                 'Qualité Livrable (CMMI)',
-                [$this->getReference('Domaine Qualité')]
+                1,
+                $this->getReference('Domaine Qualité')
             ],
             [
                 'ITIL V3',
-                [$this->getReference('Domaine Qualité')]
+                2,
+                $this->getReference('Domaine Qualité')
             ],
             [
                 'Organisation des DSI',
-                [$this->getReference('Domaine Qualité')]
+                1,
+                $this->getReference('Domaine Qualité')
             ],
             [
                 'Culture Internationale',
-                [$this->getReference('Domaine International')]
+                1,
+                $this->getReference('Domaine International')
+            ],
+            [
+                'Anglais 2',
+                4,
+                $this->getReference('Domaine International')
             ],
             [
                 'Mise en production et déploiement',
-                [$this->getReference('Domaine Services')]
+                2,
+                $this->getReference('Domaine Services')
             ],
             [
                 'La qualité des services',
-                [$this->getReference('Domaine Services')]
+                2,
+                $this->getReference('Domaine Services')
             ],
             [
                 'Support',
-                [$this->getReference('Domaine Services')]
+                1,
+                $this->getReference('Domaine Services')
             ],
             [
                 'Conférences Professionnelles',
-                [$this->getReference('Domaine Conférences Professionnelles')]
+                1,
+                $this->getReference('Domaine Conférences Professionnelles')
             ],
             [
                 'Période en entreprise 2',
-                [$this->getReference('Domaine Fin de formation')]
+                1,
+                $this->getReference('Domaine Fin de formation')
             ],
             [
                 'Synthèse Anglais',
-                [$this->getReference('Domaine Fin de formation')]
+                1,
+                $this->getReference('Domaine Fin de formation')
             ],
             [
                 'Rapport 2',
-                [$this->getReference('Domaine Fin de formation')]
+                1,
+                $this->getReference('Domaine Fin de formation')
             ],
             [
                 'Mémoire',
-                [$this->getReference('Domaine Fin de formation')]
+                2,
+                $this->getReference('Domaine Fin de formation')
             ],
             [
                 'Soutenance finale',
-                [$this->getReference('Domaine Fin de formation')]
+                2,
+                $this->getReference('Domaine Fin de formation')
             ]
         ];
     }
