@@ -32,6 +32,12 @@ class Retake
      */
     private $mark;
     
+    public function __construct()
+    {
+        $this->deadline = new \DateTime();
+    }
+    
+    
     public function getId(): ?int
     {
         return $this->id;
