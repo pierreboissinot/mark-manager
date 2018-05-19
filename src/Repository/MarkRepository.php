@@ -13,4 +13,13 @@ class MarkRepository extends ServiceEntityRepository
         parent::__construct($registry, Mark::class);
     }
     
+    public static function getInvalid(MarkRepository $markRepository)
+    {
+        $qb = $markRepository->createQueryBuilder('m')
+            ->where('m.value < 7')
+        ;
+        
+        return $qb;
+    }
+    
 }

@@ -60,5 +60,14 @@ easy_admin:
         Retake:
           class: App\Entity\Retake
           label: 'Rattrapage'
+          list:
+            sort: deadline
+            #actions:
+             # - { name: 'new_summons', type: 'route', label: 'Convoquer' }
+          form:
+            fields:
+              - { property: 'mark', type_options: { query_builder: ['App\Repository\MarkRepository', 'getInvalid'] } }
           new:
             title: 'Planifier un rattrapege'
+        Summons:
+          class: App\Entity\Summons
