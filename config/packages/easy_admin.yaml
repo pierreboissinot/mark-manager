@@ -60,3 +60,5 @@ easy_admin:
         Retake:
           class: App\Entity\Retake
           label: 'Rattrapage'
+          new:
+            title: 'Planifier un rattrapege'
