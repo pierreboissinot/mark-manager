@@ -18,7 +18,16 @@
             <tr>
                 <td class="active">{{ domain.label }}</td>
                 <td></td>
-                <td></td>
+                {% set total = 0 %}
+                {% set markCount = 0 %}
+                {% for subject in domain.subjects %}
+                        {% for mark in subject.marks if mark.student.id == studentId %}
+                            {% set total = total + mark.value %}
+                            {% set  markCount = markCount +1 %}
+                        {% endfor %}
+                {% endfor %}
+                {% set domainAverage = total/markCount %}
+                <td class="{% if domainAverage > 10 %}success{% else %}danger{% endif %}">{{ domainAverage }}</td>
             </tr>
             {% for subject in domain.subjects %}
                 <tr>
@@ -42,4 +51,9 @@
 
 {% block sidebar %}
     {{ parent() }}
+    {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', {
+        'template': 'blog/about.html.twig',
+        'sharedAge': 600,
+        '_locale': app.request.locale
+    })) }}
 {% endblock %}
