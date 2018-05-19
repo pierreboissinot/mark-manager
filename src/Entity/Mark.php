@@ -113,7 +113,7 @@ class Mark
     
     public function __toString(): string
     {
-        return "Note {$this->getValue()}";
+        return "Note {$this->getLabel()} ({$this->getSubject()->getLabel()} - {$this->getStudent()}";
     }
 
     public function getRetakes()
