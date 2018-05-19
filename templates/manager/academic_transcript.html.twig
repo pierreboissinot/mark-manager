@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'manager_index' %}
+
+{% block main %}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Crédits</th>
+                <th>Résultat (/20)</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for domain in domains %}
+            <tr>
+                <td class="active">{{ domain.label }}</td>
+                <td></td>
+                <td></td>
+            </tr>
+            {% for subject in domain.subjects %}
+                <tr>
+                    <td>{{ subject.label }}</td>
+                    <td>??</td>
+                    {% set currentMark = 0 %}
+                    {% for mark in subject.marks if mark.student.id == studentId %}
+                        {% set currentMark = mark.value %}
+                    {% endfor %}
+                    <td>{{ currentMark }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            Aucune note
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}

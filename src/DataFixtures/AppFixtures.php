@@ -76,6 +76,7 @@ class AppFixtures extends Fixture
         return [
             // $studentData = [$firstName, $lastName];
             ['John', 'Doe'],
+            ['Jane', 'Bar'],
         ];
     }
     
@@ -456,6 +457,11 @@ class AppFixtures extends Fixture
             [
                 12,
                 $this->getReference('Doe'),
+                $this->getReference('Soutenance finale')
+            ],
+            [
+                0.5,
+                $this->getReference('Bar'),
                 $this->getReference('Soutenance finale')
             ],
         ];

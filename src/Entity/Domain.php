@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DomainRepository")
@@ -29,7 +30,7 @@ class Domain
     private $label;
     
     /**
-     * @var ArrayCollection
+     * @var PersistentCollection
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\Subject", mappedBy="domains")
      */
@@ -56,7 +57,7 @@ class Domain
         return $this;
     }
     
-    public function getSubjects(): ArrayCollection
+    public function getSubjects(): PersistentCollection
     {
         return $this->subjects;
     }

@@ -5,6 +5,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\PersistentCollection;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SubjectRepository")
@@ -29,14 +30,14 @@ class Subject
     private $label;
     
     /**
-     * @var ArrayCollection
+     * @var PersistentCollection
      *
      * @ORM\OneToMany(targetEntity="App\Entity\Mark", mappedBy="subject")
      */
     private $marks;
     
     /**
-     * @var ArrayCollection
+     * @var PersistentCollection
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\Domain", inversedBy="subjects")
      * @ORM\JoinTable(name="subjects_domains")
@@ -65,7 +66,7 @@ class Subject
         return $this;
     }
     
-    public function getMarks(): ArrayCollection
+    public function getMarks(): PersistentCollection
     {
         return $this->marks;
     }
@@ -76,7 +77,7 @@ class Subject
         return $this;
     }
     
-    public function getDomains(): ArrayCollection
+    public function getDomains(): PersistentCollection
     {
         return $this->domains;
     }

@@ -13,4 +13,17 @@ class DomainRepository extends ServiceEntityRepository
         parent::__construct($registry, Domain::class);
     }
     
+    public function findDomainsByStudent(int $studentId)
+    {
+        $qb = $this->createQueryBuilder('d')
+            ->select('d')
+            ->innerJoin('d.subjects', 's')
+            ->innerJoin('s.marks', 'm')
+            ->innerJoin('m.student', 'p')
+            ->where('p.id=:studentId')
+            ->setParameter('studentId', $studentId)
+        ;
+        return $qb->getQuery()->getResult();
+    }
+    
 }

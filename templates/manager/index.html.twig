@@ -18,7 +18,7 @@
             <tr>
                 <td>{{ student.firstName }}</td>
                 <td>{{ student.lastName }}</td>
-                <td></td>
+                <td><a href="{{ path('manager_academic_transcript', { studentId: student.id }) }}">Syntèse de résultats</a></td>
             </tr>
         {% else %}
             Aucun étudiant trouvé
