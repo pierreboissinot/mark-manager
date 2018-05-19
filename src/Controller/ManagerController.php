@@ -8,6 +8,7 @@ use App\Repository\DomainRepository;
 use App\Repository\MarkRepository;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\MonologBundle\DependencyInjection\Compiler\AddSwiftMailerTransportPass;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,6 +51,39 @@ class ManagerController extends AbstractController
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'new',
             'entity' => 'Retake',
+        ));
+    }
+    
+    /**
+     * @Route(path = "/admin/student/send-academic-transcript", name = "student_send_academic_transcript")
+     */
+    public function sendAcademicTranscript(Request $request, DomainRepository $domainRepository, \Swift_Mailer $mailer, StudentRepository $studentRepository)
+    {
+        $id = $request->query->get('id');
+        $student = $studentRepository->find($id);
+        $domains = $domainRepository->findAll();
+        
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('pierre.boissinot2015@campus-eni.fr')
+            ->setTo('perso@pierreboissinot.me')
+            ->setBody(
+                $this->renderView(
+                    'manager/academic_transcript.html.twig',
+                    [
+                        'domains' => $domains,
+                        'studentId' => $id
+                    ]
+                ),
+                'text/html'
+            )
+        ;
+        $mailer->send($message);
+    
+        $this->addFlash('success', 'Synthèse de résultats envoyé à');
+        
+        return $this->redirectToRoute('easyadmin', array(
+            'action' => 'list',
+            'entity' => $request->query->get('entity'),
         ));
     }
     

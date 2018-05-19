@@ -40,6 +40,8 @@ easy_admin:
               - { property: 'id', label: 'Identifiant' }
               - { property: 'fullName', label: 'Prénom Nom' }
               - { property: 'email', label: 'Email', type: 'email' }
+            actions:
+              - { name: 'student_send_academic_transcript', type: 'route', label: 'Envoyer Synthèse' }
           show:
             title: '%%entity_label%% (#%%entity_id%%)'
           edit:
