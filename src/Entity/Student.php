@@ -32,8 +32,27 @@ class Student
      * @ORM\Column(type="string")
      */
     private $firstName;
-
-    /** @var \ArrayAccess */
-    //private $marks;
+    
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+    
+    public function setLastName(string $lastName): Student
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+    
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+    
+    public function setFirstName(string $firstName): Student
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
     
 }
