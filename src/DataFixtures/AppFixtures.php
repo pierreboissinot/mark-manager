@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Domain;
+use App\Entity\Mark;
 use App\Entity\Student;
 use App\Entity\Subject;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -16,6 +17,7 @@ class AppFixtures extends Fixture
         $this->loadStudents($manager);
         $this->loadDomains($manager);
         $this->loadSubjects($manager);
+        $this->loadMarks($manager);
     }
 
     private function loadStudents(ObjectManager $manager)
@@ -56,11 +58,24 @@ class AppFixtures extends Fixture
         $manager->flush();
     }
     
+    private function loadMarks(ObjectManager $manager)
+    {
+        foreach ($this->getMarkData() as [$value, $student, $subject]) {
+            $mark = new Mark();
+            $mark->setValue($value);
+            $mark->setStudent($student);
+            $mark->setSubject($subject);
+            $manager->persist($mark);
+        }
+        
+        $manager->flush();
+    }
+    
     private function getStudentData(): array
     {
         return [
             // $studentData = [$firstName, $lastName];
-            ['Pierre', 'Boissinot'],
+            ['John', 'Doe'],
         ];
     }
     
@@ -242,6 +257,207 @@ class AppFixtures extends Fixture
                 'Soutenance finale',
                 [$this->getReference('Domaine Fin de formation')]
             ]
+        ];
+    }
+    
+    private function getMarkData()
+    {
+        return [
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Conduite de projet - Méthode Agile')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Veille technologique et stratégique')
+            ],
+            [
+                12,
+                $this->getReference('Doe'),
+                $this->getReference('Droit')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Organisation des systèmes d\'information')
+            ],
+            [
+                10,
+                $this->getReference('Doe'),
+                $this->getReference('Mathématiques - statistique')
+            ],
+            [
+                13.5,
+                $this->getReference('Doe'),
+                $this->getReference('Gestion prévisionnelle')
+            ],
+            [
+                10,
+                $this->getReference('Doe'),
+                $this->getReference('Communication')
+            ],
+            [
+                20,
+                $this->getReference('Doe'),
+                $this->getReference('Anglais')
+            ],
+            [
+                13,
+                $this->getReference('Doe'),
+                $this->getReference('Méthode UML')
+            ],
+            [
+                15,
+                $this->getReference('Doe'),
+                $this->getReference('Informatique Décisionnelle')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Développement JEE')
+            ],
+            [
+                10,
+                $this->getReference('Doe'),
+                $this->getReference('Développement .Net')
+            ],
+            [
+                15,
+                $this->getReference('Doe'),
+                $this->getReference('Développement Web + Application Mobile')
+            ],
+            [
+                11.5,
+                $this->getReference('Doe'),
+                $this->getReference('Bases de données avancées')
+            ],
+            [
+                11.5,
+                $this->getReference('Doe'),
+                $this->getReference('Projet dans la spécialité')
+            ],
+            [
+                18,
+                $this->getReference('Doe'),
+                $this->getReference('Période en entreprise 1')
+            ],
+            [
+                10,
+                $this->getReference('Doe'),
+                $this->getReference('Rapport 1')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Soutenance 1')
+            ],
+            [
+                10,
+                $this->getReference('Doe'),
+                $this->getReference('Management et Ingénierie de projet')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Management des Hommes et efficacité personnelle')
+            ],
+            [
+                10,
+                $this->getReference('Doe'),
+                $this->getReference('Conduite de réunion')
+            ],
+            [
+                13,
+                $this->getReference('Doe'),
+                $this->getReference('Simulation Recrutement')
+            ],
+            [
+                11.5,
+                $this->getReference('Doe'),
+                $this->getReference('Marketing')
+            ],
+            [
+                16.5,
+                $this->getReference('Doe'),
+                $this->getReference('Ecoute client')
+            ],
+            [
+                15,
+                $this->getReference('Doe'),
+                $this->getReference('Business Intelligence')
+            ],
+            [
+                12.5,
+                $this->getReference('Doe'),
+                $this->getReference('Qualité Norme ISO')
+            ],
+            [
+                12,
+                $this->getReference('Doe'),
+                $this->getReference('Qualité Livrable (CMMI)')
+            ],
+            [
+                13,
+                $this->getReference('Doe'),
+                $this->getReference('ITIL V3')
+            ],
+            [
+                12,
+                $this->getReference('Doe'),
+                $this->getReference('Organisation des DSI')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Culture Internationale')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Mise en production et déploiement')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('La qualité des services')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Support')
+            ],
+            [
+                11,
+                $this->getReference('Doe'),
+                $this->getReference('Conférences Professionnelles')
+            ],
+            [
+                15,
+                $this->getReference('Doe'),
+                $this->getReference('Période en entreprise 2')
+            ],
+            [
+                20,
+                $this->getReference('Doe'),
+                $this->getReference('Synthèse Anglais')
+            ],
+            [
+                11.5,
+                $this->getReference('Doe'),
+                $this->getReference('Rapport 2')
+            ],
+            [
+                8,
+                $this->getReference('Doe'),
+                $this->getReference('Mémoire')
+            ],
+            [
+                12,
+                $this->getReference('Doe'),
+                $this->getReference('Soutenance finale')
+            ],
         ];
     }
 }
