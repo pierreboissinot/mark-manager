@@ -63,12 +63,12 @@ class ManagerController extends AbstractController
         $student = $studentRepository->find($id);
         $domains = $domainRepository->findAll();
         
-        $message = (new \Swift_Message('Hello Email'))
-            ->setFrom('pierre.boissinot2015@campus-eni.fr')
+        $message = (new \Swift_Message('Synthèse de résultats'))
+            ->setFrom('perso@pierreboissinot.me')
             ->setTo('perso@pierreboissinot.me')
             ->setBody(
                 $this->renderView(
-                    'manager/academic_transcript.html.twig',
+                    'email/academic_transcript.html.twig',
                     [
                         'domains' => $domains,
                         'studentId' => $id
