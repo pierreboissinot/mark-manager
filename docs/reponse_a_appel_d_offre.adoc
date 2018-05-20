@@ -1,0 +1,33 @@
+= Réponse à  l'appel d'offre
+Pierre Boissinot <perso@pierreboissinot.me>
+1.0, 22 mai, 2018, Mark Manager
+
+== Méthodologie de gestion de projet
+
+=== Périmètre
+
+.Fonctionnalités attendues:
+
+* Saisir les résultats
+* Gérer les repassages
+* Envoyer la synthèse de résultats
+
+== Solution envisagée
+
+=== Fonctionnalités
+
+=== Ergonomie
+
+=== Enchainement des écrans
+
+=== Pile technologique
+
+=== Architecture logicielle
+
+=== Plateformes
+Heroku car:
+* prix selon la consommation
+* accessible gratuitement
+
+* service d'emailing: Amazon SES
+* recette: Heroku (PaaS)
