@@ -67,6 +67,7 @@ class AppFixtures extends Fixture
             $mark->setValue($value);
             $mark->setStudent($student);
             $mark->setSubject($subject);
+            $mark->setInAcademicTranscript(true);
             $manager->persist($mark);
         }
         
