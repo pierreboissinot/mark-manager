@@ -36,8 +36,9 @@
                 {% if totalCoefficient > 0 %}
                     {% set domainAverage = total/totalCoefficient %}
                     <td class="{% if domainAverage > 10 %}success{% else %}danger{% endif %}">{{ domainAverage }}</td>
+                {% else %}
+                    <td>inconnu</td>
                 {% endif %}
-                <td>inconnu</td>
                 <td>
                     {% if not validDomain %}
                         <a href="{{ path('retake_new', { markId: 0, domainId: domain.id }) }}" class="btn btn-default">Proposer un rattrapage</a>
