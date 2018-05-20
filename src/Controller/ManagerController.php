@@ -87,4 +87,20 @@ class ManagerController extends AbstractController
         ));
     }
     
+    /**
+     * @Route(path="/student/{studentId}/marks", methods={"GET"}, name="manager_student_marks")
+     */
+    public function studentMarks(int $studentId, MarkRepository $markRepository, StudentRepository $studentRepository)
+    {
+        $student = $studentRepository->find($studentId);
+        $marks = $markRepository->findBy([
+            'student' => $student
+        ]);
+        
+        return $this->render('manager/student_marks.html.twig', [
+            'student' => $student,
+            '$marks' => $marks
+        ]);
+    }
+    
 }

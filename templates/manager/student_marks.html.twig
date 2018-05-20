@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'manager_student_marks' %}
+
+{% block main %}
+    <table class="table">
+        {% for mark in student.marks %}
+            <tr class="{% if mark.value < 7 %}danger{% endif %}">
+                <td>{{ mark.subject.label }}</td>
+                <td>{{ mark.subject.domain.label }}</td>
+                <td>{{ mark.subject.coefficient }}</td>
+                <td>{{ mark.value }}</td>
+            </tr>
+        {% else %}
+            Aucune note
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
