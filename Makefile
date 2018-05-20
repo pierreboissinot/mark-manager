@@ -11,5 +11,8 @@ down:
 watch:
 	$(NODE) yarn run encore dev --watch
 
+encore:
+	$(NODE) yarn run encore production
+
 install:
 	$(NODE) yarn
