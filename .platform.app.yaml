@@ -38,6 +38,7 @@ mounts:
     "/var/cache": "shared:files/cache"
     "/var/log": "shared:files/log"
     "/var/sessions": "shared:files/sessions"
+    "/var/app.db": "shared:files/app.db"
 
 # The configuration of app when it is exposed to the web.
 web:
