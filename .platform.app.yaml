@@ -27,7 +27,7 @@ hooks:
         bin/console doctrine:schema:drop --force
         bin/console doctrine:schema:update --force
         bin/console doctrine:fixtures:load --no-interaction
-        yarn install run encore production
+        yarn run encore production
 
 
 # The size of the persistent disk of the application (in MB).
