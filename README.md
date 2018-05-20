@@ -5,7 +5,7 @@ Application web permettant à ENI Ecole de suivre les résultats de ses stagiair
 ## Demo
 
 Accéder à la [demo](https://vast-headland-38919.herokuapp.com)
-Un admin vous permet d'éditer le jeu de données de test si besoiN
+Un admin vous permet d'éditer le jeu de données de test si besoin
 
 ## Features
 
