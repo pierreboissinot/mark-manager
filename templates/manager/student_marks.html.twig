@@ -6,14 +6,28 @@
     <div class="text-center">
         <p>Notes de {{ student.fullName }}</p>
     </div>
-    <a href="{{ path('mark_new', { id: student.id }) }}" class="btn btn-default">Nouvelle note</a>
+    <a href="{{ path('mark_new', { id: student.id }) }}" class="btn btn-default pull-right">Nouvelle note</a>
     <table class="table">
+        <thead>
+            <tr>
+                <th>Matière</th>
+                <th>Domaine</th>
+                <th>Coefficient</th>
+                <th>Résultat (/20)</th>
+                <th>Retenue</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
         {% for mark in student.marks %}
             <tr class="{% if mark.value < 7 %}danger{% endif %}">
                 <td>{{ mark.subject.label }}</td>
                 <td>{{ mark.subject.domain.label }}</td>
                 <td>{{ mark.subject.coefficient }}</td>
                 <td>{{ mark.value }}</td>
+                <td>{% if mark.inAcademicTranscript %}Oui{% else %}Non{% endif %}</td>
+                <td>
+                    <a href="{{ path('mark_edit', { id: mark.id}) }}" class="btn btn-default">Editer</a>
+                </td>
             </tr>
         {% else %}
             Aucune note

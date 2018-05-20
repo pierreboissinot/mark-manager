@@ -25,8 +25,12 @@ class MarkController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($mark);
             $em->flush();
+            
+            $this->addFlash('success', "{$mark} mise à jour");
     
-            return $this->redirectToRoute('manager_index');
+            return $this->redirectToRoute('manager_student_marks', [
+                'studentId' => $mark->getStudent()->getId()
+            ]);
         }
         
         return $this->render('manager/mark_form.html.twig', [
