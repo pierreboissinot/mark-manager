@@ -21,6 +21,7 @@ class MarkType extends AbstractType
             ->add('label')
             ->add('value')
             ->add('subject')
+            ->add('inAcademicTranscript')
         ;
     }
     

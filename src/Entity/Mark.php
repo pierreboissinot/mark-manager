@@ -55,6 +55,13 @@ class Mark
      */
     private $retakes;
     
+    /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean")
+     */
+    private $inAcademicTranscript = false;
+    
     
     public function __construct()
     {
@@ -124,6 +131,16 @@ class Mark
     public function setRetakes($retakes): void
     {
         $this->retakes = $retakes;
+    }
+    
+    public function isInAcademicTranscript(): ?bool
+    {
+        return $this->inAcademicTranscript;
+    }
+    
+    public function setInAcademicTranscript(bool $inAcademicTranscript): void
+    {
+        $this->inAcademicTranscript = $inAcademicTranscript;
     }
     
     
