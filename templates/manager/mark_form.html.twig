@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'manager_retake_form' %}
+
+{% block main %}
+    {{ form_start(form) }}
+    <fieldset>
+        <legend>
+            <i class="fa fa-comment" aria-hidden="true"></i> Editer note
+        </legend>
+
+        {# Render any global form error (e.g. when a constraint on a public getter method failed) #}
+        {{ form_errors(form) }}
+
+        <div class="form-group {% if not form.label.vars.valid %}has-error{% endif %}">
+            {{ form_label(form.label, 'Libellé') }}
+
+            {# Render any errors for the "content" field (e.g. when a class property constraint failed) #}
+            {{ form_errors(form.label) }}
+
+            {{ form_widget(form.label) }}
+        </div>
+
+        <div class="form-group {% if not form.value.vars.valid %}has-error{% endif %}">
+            {{ form_label(form.value, 'Valeur') }}
+
+            {# Render any errors for the "content" field (e.g. when a class property constraint failed) #}
+            {{ form_errors(form.value) }}
+
+            {{ form_widget(form.value) }}
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-primary pull-right" type="submit">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i> Enregistrer
+            </button>
+        </div>
+    </fieldset>
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}

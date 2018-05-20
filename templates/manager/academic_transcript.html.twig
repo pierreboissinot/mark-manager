@@ -52,6 +52,7 @@
                     <td>{{ subject.coefficient }}</td>
                     <td>{{ currentMark.value }}</td>
                     <td>
+                        <a href="{{ path('mark_edit', { id: currentMark.id }) }}" class="btn btn-default">Editer</a>
                         {% if currentMark.value < 7 %}
                             <a href="{{ path('retake_new', { markId: currentMark.id, domainId: 0 }) }}" class="btn btn-default">Proposer un rattrapage</a>
                         {% endif %}
