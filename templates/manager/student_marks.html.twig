@@ -3,6 +3,10 @@
 {% block body_id 'manager_student_marks' %}
 
 {% block main %}
+    <div class="text-center">
+        <p>Notes de {{ student.fullName }}</p>
+    </div>
+    <a href="{{ path('mark_new', { id: student.id }) }}" class="btn btn-default">Nouvelle note</a>
     <table class="table">
         {% for mark in student.marks %}
             <tr class="{% if mark.value < 7 %}danger{% endif %}">

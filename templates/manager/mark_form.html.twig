@@ -6,7 +6,7 @@
     {{ form_start(form) }}
     <fieldset>
         <legend>
-            <i class="fa fa-comment" aria-hidden="true"></i> Editer note
+            <i class="fa fa-comment" aria-hidden="true"></i> Note
         </legend>
 
         {# Render any global form error (e.g. when a constraint on a public getter method failed) #}
@@ -19,6 +19,15 @@
             {{ form_errors(form.label) }}
 
             {{ form_widget(form.label) }}
+        </div>
+
+        <div class="form-group {% if not form.subject.vars.valid %}has-error{% endif %}">
+            {{ form_label(form.subject, 'Matière') }}
+
+            {# Render any errors for the "content" field (e.g. when a class property constraint failed) #}
+            {{ form_errors(form.subject) }}
+
+            {{ form_widget(form.subject) }}
         </div>
 
         <div class="form-group {% if not form.value.vars.valid %}has-error{% endif %}">

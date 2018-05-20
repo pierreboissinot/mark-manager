@@ -20,6 +20,7 @@ class MarkType extends AbstractType
         $builder
             ->add('label')
             ->add('value')
+            ->add('subject')
         ;
     }
     
