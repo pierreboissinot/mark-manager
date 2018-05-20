@@ -17,22 +17,24 @@
         {% for domain in domains %}
             <tr>
                 <td class="active">{{ domain.label }}</td>
-                <td></td>
                 {% set total = 0 %}
                 {% set markCount = 0 %}
+                {% set totalCoefficient = 0 %}
                 {% for subject in domain.subjects %}
-                        {% for mark in subject.marks if mark.student.id == studentId %}
-                            {% set total = total + mark.value %}
-                            {% set  markCount = markCount +1 %}
-                        {% endfor %}
+                    {% for mark in subject.marks if mark.student.id == studentId %}
+                        {% set total = total + mark.value * mark.subject.coefficient %}
+                        {% set  markCount = markCount +1 %}
+                        {% set  totalCoefficient = totalCoefficient + mark.subject.coefficient %}
+                    {% endfor %}
                 {% endfor %}
-                {% set domainAverage = total/markCount %}
+                <td>{{ totalCoefficient }}</td>
+                {% set domainAverage = total/totalCoefficient %}
                 <td class="{% if domainAverage > 10 %}success{% else %}danger{% endif %}">{{ domainAverage }}</td>
             </tr>
             {% for subject in domain.subjects %}
                 <tr>
                     <td>{{ subject.label }}</td>
-                    <td>??</td>
+                    <td>{{ subject.coefficient }}</td>
                     {% set currentMark = 0 %}
                     {% for mark in subject.marks if mark.student.id == studentId %}
                         {% set currentMark = mark.value %}
