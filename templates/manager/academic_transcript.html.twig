@@ -10,6 +10,7 @@
                 <th></th>
                 <th>Crédits</th>
                 <th>Résultat (/20)</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,11 @@
                 <td>{{ totalCoefficient }}</td>
                 {% set domainAverage = total/totalCoefficient %}
                 <td class="{% if domainAverage > 10 %}success{% else %}danger{% endif %}">{{ domainAverage }}</td>
+                <td>
+                    {% if not validDomain %}
+                        <a href="{{ path('retake_new', { markId: 0, domainId: domain.id }) }}" class="btn btn-default">Proposer un rattrapage</a>
+                    {% endif %}
+                </td>
             </tr>
             {% for subject in domain.subjects %}
                 {% set currentMark = null %}
@@ -45,6 +51,11 @@
                     <td>{{ subject.label }}</td>
                     <td>{{ subject.coefficient }}</td>
                     <td>{{ currentMark.value }}</td>
+                    <td>
+                        {% if currentMark.value < 7 %}
+                            <a href="{{ path('retake_new', { markId: currentMark.id, domainId: 0 }) }}" class="btn btn-default">Proposer un rattrapage</a>
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endif %}
             {% endfor %}

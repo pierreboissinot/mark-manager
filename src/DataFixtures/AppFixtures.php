@@ -372,7 +372,7 @@ class AppFixtures extends Fixture
                 $this->getReference('Développement Web + Application Mobile')
             ],
             [
-                11.5,
+                6,
                 $this->getReference('Doe'),
                 $this->getReference('Bases de données avancées')
             ],
