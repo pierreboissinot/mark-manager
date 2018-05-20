@@ -20,7 +20,7 @@ Un admin vous permet d'éditer le jeu de données de test si besoiN
 * Un résultat est compris entre 0 et 20.
 * Un résultat appartient à une matière.
 * Une matère a un coefficient.
-* Un résultat est donc pondérée par le coefficient de la matière auquel il est lié.
+* Un résultat est donc pondéré par le coefficient de la matière auquel il est lié.
 * Un domaine regroupe plusieurs matières.
 
 ### Règles
