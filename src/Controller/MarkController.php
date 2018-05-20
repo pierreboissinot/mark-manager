@@ -29,7 +29,7 @@ class MarkController extends AbstractController
             $this->addFlash('success', "{$mark} mise à jour");
     
             return $this->redirectToRoute('manager_student_marks', [
-                'studentId' => $mark->getStudent()->getId()
+                'id' => $mark->getStudent()->getId()
             ]);
         }
         
