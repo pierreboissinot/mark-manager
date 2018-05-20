@@ -14,6 +14,7 @@
 {% block sidebar %}
     <div class="section">
         <a class="btn btn-lg btn-block btn-success" href="{{ path('student_send_academic_transcript', { id: student.id}) }}">Envoyer</a>
+        <a class="btn btn-lg btn-block btn-default" href="{{ path('manager_student_marks', { id: student.id }) }}">Notes</a>
     </div>
     {{ parent() }}
 {% endblock %}

@@ -65,7 +65,7 @@ class ManagerController extends AbstractController
         
         $message = (new \Swift_Message('Synthèse de résultats'))
             ->setFrom('perso@pierreboissinot.me')
-            ->setTo('perso@pierreboissinot.me')
+            ->setTo($student->getEmail())
             ->setBody(
                 $this->renderView(
                     'email/academic_transcript.html.twig',
@@ -80,7 +80,7 @@ class ManagerController extends AbstractController
         ;
         $mailer->send($message);
     
-        $this->addFlash('success', 'Synthèse de résultats envoyé à');
+        $this->addFlash('success', "Synthèse de résultats envoyé à {$student->getEmail()}");
         
         return $this->redirectToRoute('manager_academic_transcript', array(
             'id' => $student->getId(),
@@ -89,11 +89,10 @@ class ManagerController extends AbstractController
     }
     
     /**
-     * @Route(path="/student/{studentId}/marks", methods={"GET"}, name="manager_student_marks")
+     * @Route(path="/student/{id}/marks", methods={"GET"}, name="manager_student_marks")
      */
-    public function studentMarks(int $studentId, MarkRepository $markRepository, StudentRepository $studentRepository)
+    public function studentMarks(Student $student, MarkRepository $markRepository, StudentRepository $studentRepository)
     {
-        $student = $studentRepository->find($studentId);
         $marks = $markRepository->findBy([
             'student' => $student
         ]);
