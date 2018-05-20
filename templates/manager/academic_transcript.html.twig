@@ -6,80 +6,14 @@
 
     <h1>Synthèse de résultats</h1>
     <h2>{{ student.fullName }}</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th></th>
-                <th>Crédits</th>
-                <th>Résultat (/20)</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
 
-        {% for domain in domains %}
-            {% set total = 0 %}
-            {% set markCount = 0 %}
-            {% set totalCoefficient = 0 %}
-            {% set validDomain = true %}
-            {% for subject in domain.subjects %}
-                {% for mark in subject.marks if mark.student.id == student.id and mark.inAcademicTranscript %}
-                    {% set total = total + mark.value * mark.subject.coefficient %}
-                    {% set  markCount = markCount +1 %}
-                    {% set  totalCoefficient = totalCoefficient + mark.subject.coefficient %}
-                    {% if mark.value < 10 %}
-                        {% set validDomain = false %}
-                    {% endif %}
-                {% endfor %}
-            {% endfor %}
-            <tr class="domain {% if validDomain %}success{% else %}danger{% endif %}">
-                <td class="active">{{ domain.label|upper }}</td>
-                <td>{{ totalCoefficient }}</td>
-                {% if totalCoefficient > 0 %}
-                    {% set domainAverage = total/totalCoefficient %}
-                    <td class="{% if domainAverage > 10 %}success{% else %}danger{% endif %}">{{ domainAverage }}</td>
-                {% else %}
-                    <td>inconnu</td>
-                {% endif %}
-                <td>
-                    {% if not validDomain %}
-                        <a href="{{ path('retake_new', { markId: 0, domainId: domain.id }) }}" class="btn btn-default">Proposer un rattrapage</a>
-                    {% endif %}
-                </td>
-            </tr>
-            {% for subject in domain.subjects %}
-                {% set currentMark = null %}
-                {% for mark in subject.marks if mark.student.id == student.id and mark.inAcademicTranscript %}
-                    {% set currentMark = mark %}
-                {% endfor %}
-                {% if currentMark|default %}
-                <tr class="{% if currentMark.value < 7 %}danger{% elseif currentMark.value < 10 %}warning{% endif %}">
-                    <td>{{ subject.label }}</td>
-                    <td>{{ subject.coefficient }}</td>
-                    <td>{{ currentMark.value }}</td>
-                    <td>
-                        <a href="{{ path('mark_edit', { id: currentMark.id }) }}" class="btn btn-default">Editer</a>
-                        {% if currentMark.value < 7 %}
-                            <a href="{{ path('retake_new', { markId: currentMark.id, domainId: 0 }) }}" class="btn btn-default">Proposer un rattrapage</a>
-                        {% endif %}
-                    </td>
-                </tr>
-                {% endif %}
-            {% endfor %}
-        {% else %}
-            Aucune note
-        {% endfor %}
-
-        </tbody>
-    </table>
+    {% include '_academic_transcript.html.twig' with { 'student': student, 'purpose': purpose } %}
 
 {% endblock %}
 
 {% block sidebar %}
+    <div class="section">
+        <a class="btn btn-lg btn-block btn-success" href="{{ path('student_send_academic_transcript', { id: student.id}) }}">Envoyer</a>
+    </div>
     {{ parent() }}
-    {{ render_esi(controller('Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController::templateAction', {
-        'template': 'blog/about.html.twig',
-        'sharedAge': 600,
-        '_locale': app.request.locale
-    })) }}
 {% endblock %}

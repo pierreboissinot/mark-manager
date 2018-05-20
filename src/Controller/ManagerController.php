@@ -34,7 +34,8 @@ class ManagerController extends AbstractController
         
         return $this->render('manager/academic_transcript.html.twig', [
             'student' => $student,
-            'domains' => $domains
+            'domains' => $domains,
+            'purpose' => 'action'
         ]);
     }
     
@@ -56,12 +57,10 @@ class ManagerController extends AbstractController
     }
     
     /**
-     * @Route(path = "/admin/student/send-academic-transcript", name = "student_send_academic_transcript")
+     * @Route(path = "/student/{id}/send-academic-transcript/send", name = "student_send_academic_transcript")
      */
-    public function sendAcademicTranscript(Request $request, DomainRepository $domainRepository, \Swift_Mailer $mailer, StudentRepository $studentRepository)
+    public function sendAcademicTranscript(DomainRepository $domainRepository, \Swift_Mailer $mailer, Student $student)
     {
-        $id = $request->query->get('id');
-        $student = $studentRepository->find($id);
         $domains = $domainRepository->findAll();
         
         $message = (new \Swift_Message('Synthèse de résultats'))
@@ -72,7 +71,8 @@ class ManagerController extends AbstractController
                     'email/academic_transcript.html.twig',
                     [
                         'domains' => $domains,
-                        'studentId' => $id
+                        'student' => $student,
+                        'purpose' => 'view'
                     ]
                 ),
                 'text/html'
@@ -82,9 +82,9 @@ class ManagerController extends AbstractController
     
         $this->addFlash('success', 'Synthèse de résultats envoyé à');
         
-        return $this->redirectToRoute('easyadmin', array(
-            'action' => 'list',
-            'entity' => $request->query->get('entity'),
+        return $this->redirectToRoute('manager_academic_transcript', array(
+            'id' => $student->getId(),
+            'purpose' => 'view'
         ));
     }
     

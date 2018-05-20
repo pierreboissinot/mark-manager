@@ -1,0 +1,72 @@
+{% block academic_transcript %}
+<table class="table">
+    <thead>
+    <tr>
+        <th></th>
+        <th>Crédits</th>
+        <th>Résultat (/20)</th>
+        {% if 'action'==purpose %}
+        <th>Actions</th>
+        {% endif %}
+    </tr>
+    </thead>
+    <tbody>
+
+    {% for domain in domains %}
+        {% set total = 0 %}
+        {% set markCount = 0 %}
+        {% set totalCoefficient = 0 %}
+        {% set validDomain = true %}
+        {% for subject in domain.subjects %}
+            {% for mark in subject.marks if mark.student.id == student.id and mark.inAcademicTranscript %}
+                {% set total = total + mark.value * mark.subject.coefficient %}
+                {% set  markCount = markCount +1 %}
+                {% set  totalCoefficient = totalCoefficient + mark.subject.coefficient %}
+                {% if mark.value < 10 %}
+                    {% set validDomain = false %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        <tr class="domain {% if validDomain %}success{% else %}danger{% endif %}">
+            <td class="active">{{ domain.label|upper }}</td>
+            <td>{{ totalCoefficient }}</td>
+            {% if totalCoefficient > 0 %}
+                {% set domainAverage = total/totalCoefficient %}
+                <td class="{% if domainAverage > 10 %}success{% else %}danger{% endif %}">{{ domainAverage }}</td>
+            {% else %}
+                <td>inconnu</td>
+            {% endif %}
+            <td>
+                {% if not validDomain and 'action'==purpose %}
+                    <a href="{{ path('retake_new', { markId: 0, domainId: domain.id }) }}" class="btn btn-default">Proposer un rattrapage</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% for subject in domain.subjects %}
+            {% set currentMark = null %}
+            {% for mark in subject.marks if mark.student.id == student.id and mark.inAcademicTranscript %}
+                {% set currentMark = mark %}
+            {% endfor %}
+            {% if currentMark|default %}
+                <tr class="{% if currentMark.value < 7 %}danger{% elseif currentMark.value < 10 %}warning{% endif %}">
+                    <td>{{ subject.label }}</td>
+                    <td>{{ subject.coefficient }}</td>
+                    <td>{{ currentMark.value }}</td>
+                    {% if 'action'==purpose %}
+                    <td>
+                        <a href="{{ path('mark_edit', { id: currentMark.id }) }}" class="btn btn-default">Editer</a>
+                        {% if currentMark.value < 7 %}
+                            <a href="{{ path('retake_new', { markId: currentMark.id, domainId: 0 }) }}" class="btn btn-default">Proposer un rattrapage</a>
+                        {% endif %}
+                    </td>
+                        {% endif %}
+                </tr>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        Aucune note
+    {% endfor %}
+
+    </tbody>
+</table>
+{% endblock academic_transcript %}
