@@ -16,31 +16,43 @@
         {% set total = 0 %}
         {% set markCount = 0 %}
         {% set totalCoefficient = 0 %}
-        {% set validDomain = true %}
+        {% set markTooLow = false %}
+        {% set everyMarkOk = true %}
         {% for subject in domain.subjects %}
             {% for mark in subject.marks if mark.student.id == student.id and mark.inAcademicTranscript %}
                 {% set total = total + mark.value * mark.subject.coefficient %}
                 {% set  markCount = markCount +1 %}
                 {% set  totalCoefficient = totalCoefficient + mark.subject.coefficient %}
-                {% if mark.value < 10 %}
-                    {% set validDomain = false %}
+                {% if mark.value < 7 %}
+                    {% set markTooLow = true %}
+                {% endif %}
+                {% if 7 <= mark.value < 10 %}
+                    {% set everyMarkOk = false %}
                 {% endif %}
             {% endfor %}
         {% endfor %}
+        {% if totalCoefficient > 0 %}
+            {% set domainAverage = total/totalCoefficient %}
+        {% endif %}
+        {% set validDomain = true %}
+        {% if markTooLow %}
+            {% set validDomain = false %}
+        {% elseif not everyMarkOk %}
+            {% if domainAverage < 12 %}
+                {% set validDomain = false %}
+            {% endif %}
+        {% endif %}
         <tr class="domain {% if validDomain %}success{% else %}danger{% endif %}">
             <td class="active">{{ domain.label|upper }}</td>
             <td>{{ totalCoefficient }}</td>
-            {% if totalCoefficient > 0 %}
-                {% set domainAverage = total/totalCoefficient %}
-                <td class="{% if domainAverage > 10 %}success{% else %}danger{% endif %}">{{ domainAverage }}</td>
-            {% else %}
-                <td>inconnu</td>
-            {% endif %}
+            <td>{{ domainAverage }}</td>
+            {% if 'action'==purpose  %}
             <td>
-                {% if not validDomain and 'action'==purpose %}
+                {% if not validDomain %}
                     <a href="{{ path('retake_new', { markId: 0, domainId: domain.id }) }}" class="btn btn-default">Proposer un rattrapage</a>
                 {% endif %}
             </td>
+            {% endif %}
         </tr>
         {% for subject in domain.subjects %}
             {% set currentMark = null %}
