@@ -51,7 +51,7 @@ class Mark
     /**
      * @var PersistentCollection
      *
-     * @ORM\OneToMany(targetEntity="App\Entity\Retake", mappedBy="mark")
+     * @ORM\OneToMany(targetEntity="App\Entity\Retake", mappedBy="markToRetake")
      */
     private $retakes;
     

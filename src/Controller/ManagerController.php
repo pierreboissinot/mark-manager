@@ -49,7 +49,7 @@ class ManagerController extends AbstractController
         /** @var Mark $mark */
         $mark = $markRepository->find($id);
         $retake = new Retake();
-        $retake->setMark($mark);
+        $retake->setMarkToRetake($mark);
     
         return $this->redirectToRoute('easyadmin', array(
             'action' => 'new',

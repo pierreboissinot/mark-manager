@@ -30,6 +30,13 @@ class Retake
      *
      * @ORM\ManyToOne(targetEntity="App\Entity\Mark", inversedBy="retakes")
      */
+    private $markToRetake;
+    
+    /**
+     * @var Mark
+     *
+     * @ORM\OneToOne(targetEntity="App\Entity\Mark")
+     */
     private $mark;
     
     /**
@@ -59,14 +66,14 @@ class Retake
         return $this;
     }
     
-    public function getMark(): ?Mark
+    public function getMarkToRetake(): ?Mark
     {
-        return $this->mark;
+        return $this->markToRetake;
     }
     
-    public function setMark(Mark $mark): ?Retake
+    public function setMarkToRetake(Mark $markToRetake): ?Retake
     {
-        $this->mark = $mark;
+        $this->markToRetake = $markToRetake;
         return $this;
     }
     
@@ -88,7 +95,17 @@ class Retake
     
     public function __toString()
     {
-        return "Rattrapage de {$this->getMark()->getSubject()} dû le {$this->getDeadline()->format('d/m/Y')}";
+        return "Rattrapage de {$this->getMarkToRetake()->getSubject()} dû le {$this->getDeadline()->format('d/m/Y')}";
+    }
+    
+    public function getMark(): ?Mark
+    {
+        return $this->mark;
+    }
+    
+    public function setMark(Mark $mark): void
+    {
+        $this->mark = $mark;
     }
     
     

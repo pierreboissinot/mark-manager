@@ -12,15 +12,23 @@
                 <th>Deadline</th>
                 <th>Matière</th>
                 <th>Résultat à rattraper (/20)</th>
+                <th>Résultat obtenu au rattrapage (/20)</th>
                 <th>Actions</th>
             </tr>
         </thead>
         {% for retake in retakes %}
             <tr>
                 <td>{{ retake.deadline|date }}</td>
-                <td>{{ retake.mark.subject.label }}</td>
-                <td>{{ retake.mark.value }}</td>
-                <td><a href="" class="btn btn-default">Saisir la note</a></td>
+                <td>{{ retake.markToRetake.subject.label }}</td>
+                <td>{{ retake.markToRetake.value }}</td>
+                <td>{% if retake.mark|default %}{{ retake.mark.value }}{% endif %}</td>
+                <td>
+                    {% if not retake.mark|default %}
+                        <a href="{{ path('mark_new_from_retake', { id: retake.id }) }}" class="btn btn-default">Saisir la note</a>
+                    {% else %}
+                        <a href="{{ path('mark_edit', { id: retake.mark.id }) }}" class="btn btn-default">Consulter la note</a>
+                    {% endif %}
+                </td>
             </tr>
         {% else %}
         Aucnun rattrapage de prévu

@@ -23,7 +23,7 @@ class RetakeController extends AbstractController
         if (!empty($markId)) {
             /** @var Mark $mark */
             $mark = $markRepository->find($markId);
-            $retake->setMark($mark);
+            $retake->setMarkToRetake($mark);
         } elseif (!empty($domainId)) {
             $options['domainId'] = $domainId;
         }
