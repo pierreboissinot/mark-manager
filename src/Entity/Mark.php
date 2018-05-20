@@ -62,6 +62,13 @@ class Mark
      */
     private $inAcademicTranscript = false;
     
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+    
     
     public function __construct()
     {
@@ -141,6 +148,16 @@ class Mark
     public function setInAcademicTranscript(bool $inAcademicTranscript): void
     {
         $this->inAcademicTranscript = $inAcademicTranscript;
+    }
+    
+    public function getDate(): ?\DateTime
+    {
+        return $this->date;
+    }
+    
+    public function setDate(\DateTime $date): void
+    {
+        $this->date = $date;
     }
     
     

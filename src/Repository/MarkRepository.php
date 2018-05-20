@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Mark;
+use App\Entity\Student;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -20,6 +21,19 @@ class MarkRepository extends ServiceEntityRepository
         ;
         
         return $qb;
+    }
+    
+    public function findByStudent(Student $student)
+    {
+        $qb = $this->createQueryBuilder('m')
+            ->join('m.student', 's')
+            ->where('s.id=:studentId')
+            ->setParameter('studentId', $student->getId())
+            ->orderBy('m.date', 'DESC')
+            ->getQuery()
+        ;
+        
+        return $qb->getResult();
     }
     
 }

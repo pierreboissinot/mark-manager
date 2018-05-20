@@ -68,6 +68,7 @@ class AppFixtures extends Fixture
             $mark->setStudent($student);
             $mark->setSubject($subject);
             $mark->setInAcademicTranscript(true);
+            $mark->setDate(new \DateTime('now - '.rand(1, 300).'days'));
             $manager->persist($mark);
         }
         

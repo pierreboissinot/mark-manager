@@ -94,9 +94,7 @@ class ManagerController extends AbstractController
      */
     public function studentMarks(Student $student, MarkRepository $markRepository, StudentRepository $studentRepository)
     {
-        $marks = $markRepository->findBy([
-            'student' => $student
-        ]);
+        $marks = $markRepository->findByStudent($student);
         
         return $this->render('manager/student_marks.html.twig', [
             'student' => $student,
