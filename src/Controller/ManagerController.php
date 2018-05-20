@@ -7,6 +7,7 @@ use App\Entity\Retake;
 use App\Entity\Student;
 use App\Repository\DomainRepository;
 use App\Repository\MarkRepository;
+use App\Repository\RetakeRepository;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\MonologBundle\DependencyInjection\Compiler\AddSwiftMailerTransportPass;
@@ -100,6 +101,18 @@ class ManagerController extends AbstractController
         return $this->render('manager/student_marks.html.twig', [
             'student' => $student,
             '$marks' => $marks
+        ]);
+    }
+    
+    /**
+     * @Route(path="/student/{id}/retakes", methods={"GET"}, name="manager_student_retakes")
+     */
+    public function studentRetakes(Student $student, RetakeRepository $retakeRepository)
+    {
+        $retakes = $retakeRepository->findByStudent($student);
+        return $this->render('manager/student_retakes.html.twig', [
+            'student' => $student,
+            'retakes' => $retakes
         ]);
     }
     

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body_id 'manager_student_retakes' %}
+
+{% block main %}
+    <div class="text-center">
+        <p>Rattrapages de {{ student.fullName }}</p>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Deadline</th>
+                <th>Matière</th>
+                <th>Résultat à rattraper (/20)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for retake in retakes %}
+            <tr>
+                <td>{{ retake.deadline|date }}</td>
+                <td>{{ retake.mark.subject.label }}</td>
+                <td>{{ retake.mark.value }}</td>
+                <td><a href="" class="btn btn-default">Saisir la note</a></td>
+            </tr>
+        {% else %}
+        Aucnun rattrapage de prévu
+        {% endfor %}
+    </table>
+{% endblock %}
+
+{% block sidebar %}
+    <div class="section">
+        <a class="btn btn-lg btn-block btn-default" href="{{ path('manager_academic_transcript', { id: student.id}) }}">Synthèse de résultats</a>
+    </div>
+    {{ parent() }}
+{% endblock %}

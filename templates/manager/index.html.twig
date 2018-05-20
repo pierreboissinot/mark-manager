@@ -21,6 +21,7 @@
                 <td>
                     <a href="{{ path('manager_student_marks', { id: student.id }) }}" class="btn btn-default">Consulter les résultats</a>
                     <a href="{{ path('manager_academic_transcript', { id: student.id }) }}" class="btn btn-default">Syntèse de résultats</a>
+                    <a href="{{ path('manager_student_retakes', { id: student.id }) }}" class="btn btn-default">Rattrapages</a>
                 </td>
             </tr>
         {% else %}
