@@ -36,5 +36,8 @@
 {% endblock %}
 
 {% block sidebar %}
+    <div class="section">
+        <a class="btn btn-lg btn-block btn-default" href="{{ path('manager_academic_transcript', { id: student.id}) }}">Synthèse de résultats</a>
+    </div>
     {{ parent() }}
 {% endblock %}
