@@ -24,7 +24,8 @@
         "symfony/web-link": "^4.0",
         "symfony/webpack-encore-pack": "*",
         "symfony/yaml": "^4.0",
-        "doctrine/doctrine-fixtures-bundle": "^3.0"
+        "doctrine/doctrine-fixtures-bundle": "^3.0",
+        "ext-sqlite3": "*"
     },
     "require-dev": {
         "symfony/browser-kit": "^4.0",
