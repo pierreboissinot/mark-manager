@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Mark;
 use App\Entity\Retake;
+use App\Entity\Student;
 use App\Repository\DomainRepository;
 use App\Repository\MarkRepository;
 use App\Repository\StudentRepository;
@@ -25,14 +26,14 @@ class ManagerController extends AbstractController
     }
     
     /**
-     * @Route("/academic-transcript/{studentId}", methods={"GET"}, name="manager_academic_transcript")
+     * @Route("/academic-transcript/{id}", methods={"GET"}, name="manager_academic_transcript")
      */
-    public function academicTranscript(int $studentId, DomainRepository $domainRepository): Response
+    public function academicTranscript(Student $student, DomainRepository $domainRepository): Response
     {
-        $domains = $domainRepository->findDomainsByStudent($studentId);
+        $domains = $domainRepository->findDomainsByStudent($student->getId());
         
         return $this->render('manager/academic_transcript.html.twig', [
-            'studentId' => $studentId,
+            'student' => $student,
             'domains' => $domains
         ]);
     }

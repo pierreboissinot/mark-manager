@@ -4,6 +4,8 @@
 
 {% block main %}
 
+    <h1>Synthèse de résultats</h1>
+    <h2>{{ student.fullName }}</h2>
     <table class="table">
         <thead>
             <tr>
@@ -21,7 +23,7 @@
             {% set totalCoefficient = 0 %}
             {% set validDomain = true %}
             {% for subject in domain.subjects %}
-                {% for mark in subject.marks if mark.student.id == studentId and mark.inAcademicTranscript %}
+                {% for mark in subject.marks if mark.student.id == student.id and mark.inAcademicTranscript %}
                     {% set total = total + mark.value * mark.subject.coefficient %}
                     {% set  markCount = markCount +1 %}
                     {% set  totalCoefficient = totalCoefficient + mark.subject.coefficient %}
@@ -47,7 +49,7 @@
             </tr>
             {% for subject in domain.subjects %}
                 {% set currentMark = null %}
-                {% for mark in subject.marks if mark.student.id == studentId and mark.inAcademicTranscript %}
+                {% for mark in subject.marks if mark.student.id == student.id and mark.inAcademicTranscript %}
                     {% set currentMark = mark %}
                 {% endfor %}
                 {% if currentMark|default %}
