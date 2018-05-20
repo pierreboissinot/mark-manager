@@ -1,14 +1,24 @@
 doctrine:
+    dbal:
+        # configure these for your database server
+        driver: 'pdo_sqlite'
+        charset: utf8mb4
+        default_table_options:
+            charset: utf8mb4
+            collate: utf8mb4_unicode_ci
+
+        url: '%env(resolve:DATABASE_URL)%'
     orm:
-        metadata_cache_driver:
-            type: service
-            id: doctrine.system_cache_provider
-        query_cache_driver:
-            type: service
-            id: doctrine.system_cache_provider
-        result_cache_driver:
-            type: service
-            id: doctrine.result_cache_provider
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+        mappings:
+            App:
+                is_bundle: false
+                type: annotation
+                dir: '%kernel.project_dir%/src/Entity'
+                prefix: 'App\Entity'
+                alias: App
 
 services:
     doctrine.result_cache_provider:
