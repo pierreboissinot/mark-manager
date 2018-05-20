@@ -19,8 +19,8 @@
                 <td>{{ student.firstName }}</td>
                 <td>{{ student.lastName }}</td>
                 <td>
-                    <a href="{{ path('manager_student_marks', { studentId: student.id }) }}">Consulter les résultats</a>
-                    <a href="{{ path('manager_academic_transcript', { studentId: student.id }) }}">Syntèse de résultats</a>
+                    <a href="{{ path('manager_student_marks', { studentId: student.id }) }}" class="btn btn-default">Consulter les résultats</a>
+                    <a href="{{ path('manager_academic_transcript', { studentId: student.id }) }}" class="btn btn-default">Syntèse de résultats</a>
                 </td>
             </tr>
         {% else %}
