@@ -14,5 +14,8 @@
         "watch": "encore dev --watch",
         "build": "encore production",
         "heroku-postbuild": "encore production"
+    },
+    "dependencies": {
+        "intro.js": "^2.9.3"
     }
 }
