@@ -4,7 +4,7 @@
 
 {% block main %}
 
-    <table class="table">
+    <table class="table" data-step="1" data-intro="Ce tableau liste les élèves">
         <thead>
             <tr>
                 <th>Nom</th>
@@ -19,9 +19,9 @@
                 <td>{{ student.firstName }}</td>
                 <td>{{ student.lastName }}</td>
                 <td>
-                    <a href="{{ path('manager_student_marks', { id: student.id }) }}" class="btn btn-default">Consulter les résultats</a>
-                    <a href="{{ path('manager_academic_transcript', { id: student.id }) }}" class="btn btn-default">Syntèse de résultats</a>
-                    <a href="{{ path('manager_student_retakes', { id: student.id }) }}" class="btn btn-default">Rattrapages</a>
+                    <a href="{{ path('manager_student_marks', { id: student.id }) }}" class="btn btn-default" data-step="2" data-intro="Vous pouvez accéder aux résultats de l'élève">Consulter les résultats</a>
+                    <a href="{{ path('manager_academic_transcript', { id: student.id }) }}" class="btn btn-default" data-step="3" data-intro="Ou accéder à sa synthèse de résultats">Syntèse de résultats</a>
+                    <a href="{{ path('manager_student_retakes', { id: student.id }) }}" class="btn btn-default" data-step="4" data-intro="Vous pouvez également suivre ses épreuves de rattrapage">Rattrapages</a>
                 </td>
             </tr>
         {% else %}
