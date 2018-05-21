@@ -19,8 +19,8 @@
         {% for retake in retakes %}
             <tr>
                 <td>{{ retake.deadline|date }}</td>
-                <td>{{ retake.markToRetake.subject.label }}</td>
-                <td>{{ retake.markToRetake.value }}</td>
+                <td>{{ retake.markToRetake.subject.labe|default }}</td>
+                <td>{{ retake.markToRetake.value|default }}</td>
                 <td>{% if retake.mark|default %}{{ retake.mark.value }}{% endif %}</td>
                 <td>
                     {% if not retake.mark|default %}
