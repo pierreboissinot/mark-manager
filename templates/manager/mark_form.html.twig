@@ -21,6 +21,15 @@
             {{ form_widget(form.label) }}
         </div>
 
+        <div class="form-group {% if not form.date.vars.valid %}has-error{% endif %}">
+            {{ form_label(form.date, 'Date de passage') }}
+
+            {# Render any errors for the "content" field (e.g. when a class property constraint failed) #}
+            {{ form_errors(form.date) }}
+
+            {{ form_widget(form.date) }}
+        </div>
+
         <div class="form-group {% if not form.subject.vars.valid %}has-error{% endif %}">
             {{ form_label(form.subject, 'Matière') }}
 

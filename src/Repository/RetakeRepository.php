@@ -17,7 +17,7 @@ class RetakeRepository extends ServiceEntityRepository
     public function findByStudent(Student $student)
     {
         $qb = $this->createQueryBuilder('r')
-            ->join('r.mark', 'm')
+            ->join('r.markToRetake', 'm')
             ->join('m.student', 's')
             ->where('s.id=:studentId')
             ->setParameter('studentId', $student->getId())

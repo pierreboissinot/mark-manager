@@ -31,6 +31,7 @@ class MarkFromRetakeType extends AbstractType
                     ])
                 ]
             ])
+            ->add('date')
             ->add('subject')
             ->add('inAcademicTranscript')
         ;

@@ -26,7 +26,7 @@ class RetakeType extends AbstractType
             ->add('deadline')
         ;
         if (!empty($options['domainId'])) {
-            $builder->add('mark', EntityType::class, [
+            $builder->add('markToRetake', EntityType::class, [
                 'class' => Mark::class,
                 'query_builder' => function (MarkRepository $markRepository) use ($options) {
                     return $markRepository->createQueryBuilder('m')
@@ -38,7 +38,7 @@ class RetakeType extends AbstractType
                 },
             ]);
         } else {
-            $builder->add('mark');
+            $builder->add('markToRetake');
         }
     }
     

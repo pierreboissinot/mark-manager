@@ -36,7 +36,7 @@ class RetakeController extends AbstractController
             $em->flush();
         
             return $this->redirectToRoute('manager_student_retakes', [
-                'id' => $retake->getMark()->getStudent()->getId()
+                'id' => $retake->getMarkToRetake()->getStudent()->getId()
             ]);
         }
         

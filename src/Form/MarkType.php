@@ -19,6 +19,7 @@ class MarkType extends AbstractType
     {
         $builder
             ->add('label')
+            ->add('date')
             ->add('value')
             ->add('subject')
             ->add('inAcademicTranscript')
