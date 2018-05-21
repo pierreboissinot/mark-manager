@@ -35,7 +35,9 @@ class RetakeController extends AbstractController
             $em->persist($retake);
             $em->flush();
         
-            return $this->redirectToRoute('manager_index');
+            return $this->redirectToRoute('manager_student_retakes', [
+                'id' => $retake->getMark()->getStudent()->getId()
+            ]);
         }
         
         return $this->render('manager/retake_form.html.twig', [
