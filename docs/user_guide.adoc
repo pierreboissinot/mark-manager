@@ -1,0 +1,60 @@
+= Guide utilisateur
+
+Pour découvrir l'application dans les meilleures conditions, je vous recommande de lancer la demo sur chaque vue en cliquant sur le bouton bleu "Lancer la demo" présent en haut du menu de droite sur chaque vue.
+
+== Vues métier
+
+=== Accueil
+
+Lorsque vous arrivez sur l'application, un tableau présente la liste des élèves et les actions clefs que vous pouvez effectuer depuis un élève.
+
+Les actions possibles sont:
+
+* consulter ses résultats
+* consulter sa synthèse de résultats
+* suivre ses rattrapages
+
+=== Notes de l'élève
+
+Cette vue présente l'ensemble des résultats de l'élève.
+
+Chaque note peutre être éditée.
+
+Vous pouvez saisir une nouvelle note depuis le bouton "Nouvelle note" situé au-dessus du tableau.
+
+Vous pouvez aller consulter la synthèse de résultats via le bouton "Synthèse de résultats" dans le menu latéral.
+
+Dans la prochaine livraison, les notes seront triées par date de passage dans l'ordre décroissant pour plus de pertinence.
+
+=== Synthèse de résultats
+
+Cette vue a pour but de présenter la synthèse de résultats de l'élève.
+
+Vous remarquez des similitudes quant à la structure du tableau par rapport à l'annexe que vous m'avez fournie.
+
+Pour plus de clarté, un code couleur est utilisé pour signifier qu'un domaine est valide/invalide ou qu'une note est (trop) basse.
+
+Un domaine invalide est représenté sur fond rouge.
+
+Un domaine valide est représenté sur fond vert.
+
+Une note trop basse (inférieure à 7) est représentée sur fond rouge.
+
+Une note "juste" (entre 7 et 10) est représentée sur fond jaune.
+
+Vous pouvez transmettre la synthèse de résultats par mail à l'élève via le bouton vert "Envoyer" situé en haut du menu latéral.
+
+
+=== Rattrapages
+
+Cette vue présente les épreuves de rattrapages prévues pour l'élève.
+
+Vous pouvez consulter la note à rattraper et saisir la note obtenue au rattrapage (qui ne peut excéder 12).
+
+Une fois la note obtenue au rattrapage saisie, elle est affichée à côté de l'épreuve initiale.
+
+== Admin
+
+Cette vue a pour but de vous donner la main libre pour nourrir le jeu de donneés avec les valeurs que vous souhaitez.
+
+Pour chaque entité manipulée par l'application, vous pouvez lister, consulter, éditer et effacer.
