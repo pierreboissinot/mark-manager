@@ -4,7 +4,7 @@
 
 {% block main %}
 
-    <h1>Synthèse de résultats</h1>
+    <h1 data-step="1" data-intro="Ici vous pouvez consulter les domaines validés sur fond vert et invalidés sur font rouge, auquel cas vous pouvez proposer un rattrapage à l'élève pour le domaine. Une notre inférieure à 7 est représentée sur fond rouge, auquel cas vous pouvez également proposer un rattrapage. Une note basse, comprise entre 7 et 10 est représentée sur fond jaune">Synthèse de résultats</h1>
     <h2>{{ student.fullName }}</h2>
 
     {% include '_academic_transcript.html.twig' with { 'student': student, 'purpose': purpose } %}
@@ -13,8 +13,8 @@
 
 {% block sidebar %}
     <div class="section">
-        <a class="btn btn-lg btn-block btn-success" href="{{ path('student_send_academic_transcript', { id: student.id}) }}">Envoyer</a>
-        <a class="btn btn-lg btn-block btn-default" href="{{ path('manager_student_marks', { id: student.id }) }}">Notes</a>
+        <a class="btn btn-lg btn-block btn-success" href="{{ path('student_send_academic_transcript', { id: student.id}) }}" data-step="2" data-intro="Vous pouvez transmettre cette synthèse de résultats par email à l'élève">Envoyer</a>
+        <a class="btn btn-lg btn-block btn-default" href="{{ path('manager_student_marks', { id: student.id }) }}" data-step="3" data-intro="Vous pouvez revenir consulter les notes de l'élève en cliquant sur ce bouton">Notes</a>
     </div>
     {{ parent() }}
 {% endblock %}

@@ -6,8 +6,8 @@
     <div class="text-center">
         <p>Notes de {{ student.fullName }}</p>
     </div>
-    <a href="{{ path('mark_new', { id: student.id }) }}" class="btn btn-default pull-right">Nouvelle note</a>
-    <table class="table">
+    <a href="{{ path('mark_new', { id: student.id }) }}" class="btn btn-default pull-right" data-step="3" data-intro="Vous pouvez également saisir un nouveau résultat pour l'élève">Nouvelle note</a>
+    <table class="table" data-step="1" data-intro="Ce tableau liste tous les résulats de l'élève">
         <thead>
             <tr>
                 <th title="date de passage de l'épreuve">Le</th>
@@ -28,7 +28,7 @@
                 <td>{{ mark.value }}</td>
                 <td>{% if mark.inAcademicTranscript %}Oui{% else %}Non{% endif %}</td>
                 <td>
-                    <a href="{{ path('mark_edit', { id: mark.id}) }}" class="btn btn-default">Editer</a>
+                    <a href="{{ path('mark_edit', { id: mark.id}) }}" class="btn btn-default" data-step="2" data-intro="Vous pouvez éditer un résultat">Editer</a>
                 </td>
             </tr>
         {% else %}
@@ -39,7 +39,7 @@
 
 {% block sidebar %}
     <div class="section">
-        <a class="btn btn-lg btn-block btn-default" href="{{ path('manager_academic_transcript', { id: student.id}) }}">Synthèse de résultats</a>
+        <a class="btn btn-lg btn-block btn-default" href="{{ path('manager_academic_transcript', { id: student.id}) }}" data-step="4" data-intro="Vous pouvez passer à l'écran de synthèse de résultats pour l'élève">Synthèse de résultats</a>
     </div>
     {{ parent() }}
 {% endblock %}

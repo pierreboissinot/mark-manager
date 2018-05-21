@@ -5,6 +5,8 @@ $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
 // the ~ allows you to reference things in node_modules
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+@import '~intro.js/minified/introjs.min.css';
+
 .domain {
   font-weight: bold;
 }
