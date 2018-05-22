@@ -40,3 +40,7 @@ Un admin vous permet d'éditer le jeu de données de test si besoin
 * Symfony 4
 * Amazon SES pour l'envoi de mail
 * Bootstrap 3.3 (css et js managés via Webpack)
+
+## Docs
+
+Les documents `réponse à l'appel d'offre`, `user guide` et `exploitation` se trouvent dans le dossier `docs`.
