@@ -4,6 +4,20 @@ Pierre Boissinot <perso@pierreboissinot.me>
 
 == Méthodologie de gestion de projet
 
+Pour garantir une solution logicielle de qualité et qui répond au mieux à vos besoins. Nous allons vivre le projet dans un contexte agile.
+
+Pour être plus précis, nous développerons en suivant la méthode Scrum avec une durée de sprint de 2 semaines.
+
+C'est pourquoi nous devrons nous décider sur ce qu'est le MVP 1, le premier Minimum Viable Product.
+
+Ce MVP définit le périmètre de fonctionnalité sans lequelles le produit n'aurait aucun intérêt.
+
+De plus, je recommande que nous désignons un PO autre que vous, Mathieu, car vous avez un profil technique et je pense qu'il serait bon pour la solution d'être recettée aussi par une personne de ENI Ecole qui connaît le système de suivi des résultats des stagiaires.
+
+Une fois le projet lancé, vous recevrez donc une livraison du produit toutes les 2 semaines.
+
+Cela vous laisse le temps de recetter et moi de m'organiser dans le temps de conception et développement.
+
 === Périmètre
 
 .Fonctionnalités attendues:
@@ -26,8 +40,11 @@ Pierre Boissinot <perso@pierreboissinot.me>
 
 === Plateformes
 Heroku car:
+
 * prix selon la consommation
 * accessible gratuitement
+* permet de mettre en place rapidement un environnement de recette
+*
 
 * service d'emailing: Amazon SES
 * recette: Heroku (PaaS)
