@@ -2,6 +2,38 @@
 Pierre Boissinot <perso@pierreboissinot.me>
 1.0, 22 mai, 2018, Mark Manager
 
+Dans un premier temps , je vais restituer ce que j'ai compris de votre projet puis dans un second temps, je détaillerai la stratégie et les outils à mettre en place pour répondre à vos attentes. Enfin, je donnerai une estimation du budjet prévisionnel et des délais estimés.
+
+== Contexte du projet
+
+ENI Ecole souhaite disposer d'une solution lui permettant de suivre les résultats de ses élèves ainsi que de gérer les éventuels épreuves de rattrapage.
+
+Dans ce qui suit et les documents qui vous sont fournis, notre projet est appelé `Mark Manager`.
+
+== Compréhension du métier
+
+D'après l'expression de votre besoin que vous m'avez faite parvenir, voici les entités importantes que nous pouvons retenir:
+* Un résultat est compris entre 0 et 20.
+* Un résultat appartient à une matière et un élève.
+* Une matère a un coefficient.
+* Un résultat est donc pondéré par le coefficient de la matière auquel il est lié.
+* Un domaine regroupe plusieurs matières.
+
+== Données personnelles:
+
+Le projet étant amener à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous feront un point sur les enjeux et les réponsabilités du stockage et du traitements de ces données,
+car vous devez savoir que le règles imposées aujourd'hui par la CNIL en France vont être plus strictes à ce sujet le 25 mai prochain, conformément au règlement européen appelé GDPR.
+
+Voici les règles métiers que j'ai retenu:
+* Un domaine est invalide si une des notes est inférieure strictement à 7/20.
+* Un domaine est valide si toutes ses notes sont supérieures à 10/20 ou si toutes ses notes sont supérieures à 7/20 et que la moyenne du domaine est supérieure à 12.
+* Une note obtenue dans le cadre d'un rattrapage ne peut dépasser 12/20
+
+.Comportement attendu
+* Si un domaine est invalide, l'utilisateur propose un rattrapage au stagiaire.
+* Si une note est strictement inférieure à 7/20, l'utilisateur propose un rattrapage.
+
+
 == Méthodologie de gestion de projet
 
 Pour garantir une solution logicielle de qualité et qui répond au mieux à vos besoins. Nous allons vivre le projet dans un contexte agile.
@@ -12,7 +44,7 @@ C'est pourquoi nous devrons nous décider sur ce qu'est le MVP 1, le premier Min
 
 Ce MVP définit le périmètre de fonctionnalité sans lequelles le produit n'aurait aucun intérêt.
 
-De plus, je recommande que nous désignons un PO autre que vous, Mathieu, car vous avez un profil technique et je pense qu'il serait bon pour la solution d'être recettée aussi par une personne de ENI Ecole qui connaît le système de suivi des résultats des stagiaires.
+De plus, je recommande que nous désignons un Product Owner autre que vous, Mathieu, car vous avez un profil technique et je pense qu'il serait bon pour la solution d'être recettée aussi par une personne de ENI Ecole qui connaît le système de suivi des résultats des stagiaires. Il aura la responsabilité d'apporter la connaissance métier et de valider les livraisons lors des phases de recette.
 
 Une fois le projet lancé, vous recevrez donc une livraison du produit toutes les 2 semaines.
 
@@ -22,29 +54,116 @@ Cela vous laisse le temps de recetter et moi de m'organiser dans le temps de con
 
 .Fonctionnalités attendues:
 
-* Saisir les résultats
+* Saisir les résultats, où nous pouvons différencier trois types de résultat
+** résultat intial (compris entre 0 et 20)
+** résultat obtenu lors d'une épreuve de rattrapage (compris entre 0 et 12)
+** résultat obtenu au TOEIC (compris ente 0 et 990)
 * Gérer les repassages
+** Planifier un rattrapage
+** Saisir la note obtenu lors du rattrapage
+** Remplacer la note initiale par la note obtenue suite au rattrapage
 * Envoyer la synthèse de résultats
+* Editer la synthèse de résultats
 
 == Solution envisagée
 
+Pour
+Cette application pourrait se connecter à vos données pour récupérer les informations des étudiants existantes au sein de votre école.
+
 === Fonctionnalités
+
+=== Ecrans
+
+Chaque écran est relatif à un élève.
+
+==== Synthèse de résultats
+
+Il s'agit de l'écran principal de l'application. Il doit ressembler le plus possible au document de synthèse de résultat que vous m'avez fourni en annexe, car c'est le format que vous êtes habituer de lire.
+
+En plus de reprendre la structure de la synthèse de résultat, cette vue permettra de mettre en évidence:
+* les domaines valides sur un fond vert
+* les domaines invalides sur un fond rouge
+* les notes inférieures à 7 sur un fond rouge
+* les notes comprises entre 7 et 10 sur un fond jaune
+
+Vous pouvez accéder au formulaire d'édition de note depuis cette vue.
+
+Vous pouvez également envoyer la synthèse par mail à l'élève en effectuant un clic seulement sur le bouton `Envoyer`.
+
+=== Rattrapages
+
+Il s'agit de présenter les épreuves de rattrapages planifiées pour l'élève.
+
+Les épreuves sont classées par date de passage dans l'ordre décroissant.
+
+Vous pouvez saisir la note obtenue lors du rattrapage.
+
+=== Résultats
+
+Cette vue présente l'ensemble des résultats obtenus par l'élève.
+
+Vous pouvez rapidement éditer une note ou bien en saisir une nouvelle.
+
 
 === Ergonomie
 
-=== Enchainement des écrans
-
-=== Pile technologique
+Chaque vue de l'application comprend:
+* un menu horizontal en haut (identique sur chaque vue)
+* le contenu principal au centre
+* un menu vertical et contextuel à droite (dont les items sont pertinent par rapport au contenu)
 
 === Architecture logicielle
 
+==== Back end
+
+Cette application sera développée en utilisant le framework Symfony, maintenu par une communauté active française de développeurs PHP.
+Cela nous permet de développer rapidement une application fonctionnelle brique par brique et sécurisée. Pour notre projet, Symfony offre les avantages suivant:
+* utilise un ORM, vous pouvez donc choisir le système de gestion de base de donnée de votre DSI par exemple.
+* utilise la librairie Monolog permettant de formater les logs applicatifs et de les rediriger vers la sortie que vous souhaitez.
+* utilise la librairie SwiftMailer permettant de choisir le service/serveur mail que vous souhaitez
+
+==== Front end
+
+Pour gérer le développement front, nous utiliserons Webpack, qui permettra:
+* de transpiler le code Javascript et CSS dans une version compatilble avec les navigateurs ciblées par l'application
+* réaliser des optimisations au niveaux du poids des fichiers téléchargés sur le post client via des opérations de tree-shaking et de suppression de dead code.
+
+
 === Plateformes
-Heroku car:
 
-* prix selon la consommation
-* accessible gratuitement
+==== Heroku
+
+Nous utiliserons la plateforme heroku pour déployer notre application.
+
+.Voici les raisons qui m'ont poussé vers ce choix
+* accessible gratuitement dans un premier temps, ce qui me permet de vous proposer un environnement de recette avec le MVP0
 * permet de mettre en place rapidement un environnement de recette
-*
+* permet de livrer rapidement la solution (2min)
+* tarification: on paie suivant la consommation en resources de l'application
 
-* service d'emailing: Amazon SES
-* recette: Heroku (PaaS)
+==== Service mail
+
+J'ai choisi le service Amazon SES car accessible gratuitement dans un premier temps et facilement configurable.
+
+== Estimation des charges
+
+== Délais
+
+Si vous acceptez que nous construisions ce projet en suivant une méthode agile, brique par brique, nous pouvons décider d'arrêter le projet dès qu'il satisfait correctement vos besoins.
+
+Pour arriver au résultat du produit final, j'estime un délai de 30 jours ouvrés.
+
+== MVP0
+
+Pour vous livrer une première version de la solution, j'ai été au plus simple du produit attendu, que j'ai appelé MVP0.
+
+Ce produit répond aux fonctionnalités principales pour un élève suivant la formation MS2I en alternance, à savoir:
+* Consulter les résultats
+* Consulter la synthèse de résultats
+* Consulter les rattrapages
+* Saisir un résultat
+* Planifier un rattrapage
+* Saisir une notre obtenue suite au passage d'une épreuve de rattrapage
+* Envoyer la synthèse de résultats par mail
+
+Une fois que vous m'aurez fait parvenir vos retours quant à cette première itération du produit, nous pourrons décider ensemble quelles briques fonctionnelles nous ajoutons (la gestion d'élève suivant d'autres types de formation par exemple).
