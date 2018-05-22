@@ -1,6 +1,6 @@
 = Guide utilisateur
 
-Pour découvrir l'application dans les meilleures conditions, je vous recommande de lancer la demo sur chaque vue en cliquant sur le bouton bleu "Lancer la demo" présent en haut du menu de droite sur chaque vue.
+Pour découvrir l'application dans les meilleures conditions, je vous recommande de lancer la démo sur chaque vue en cliquant sur le bouton bleu "Lancer la demo" présent en haut du menu de droite sur chaque vue.
 
 == Vues métier
 
@@ -22,7 +22,7 @@ Chaque note peutre être éditée.
 
 Vous pouvez saisir une nouvelle note depuis le bouton "Nouvelle note" situé au-dessus du tableau.
 
-Vous pouvez aller consulter la synthèse de résultats via le bouton "Synthèse de résultats" dans le menu latéral.
+Vous pouvez consulter la synthèse de résultats via le bouton "Synthèse de résultats" dans le menu latéral.
 
 Dans la prochaine livraison, les notes seront triées par date de passage dans l'ordre décroissant pour plus de pertinence.
 
@@ -47,7 +47,7 @@ Vous pouvez transmettre la synthèse de résultats par mail à l'élève via le 
 
 === Rattrapages
 
-Cette vue présente les épreuves de rattrapages prévues pour l'élève.
+Cette vue présente les épreuves de rattrapage prévues pour l'élève.
 
 Vous pouvez consulter la note à rattraper et saisir la note obtenue au rattrapage (qui ne peut excéder 12).
 

@@ -2,11 +2,11 @@
 Pierre Boissinot <perso@pierreboissinot.me>
 1.0, 22 mai, 2018, Mark Manager
 
-Dans un premier temps , je vais restituer ce que j'ai compris de votre projet puis dans un second temps, je détaillerai la stratégie et les outils à mettre en place pour répondre à vos attentes. Enfin, je donnerai une estimation du budjet prévisionnel et des délais estimés.
+Dans un premier temps , je vais restituer ce que j'ai compris de votre projet puis dans un second temps, je détaillerai la stratégie et les outils à mettre en place pour répondre à vos attentes. Enfin, je donnerai une estimation du budget prévisionnel et des délais estimés.
 
 == Contexte du projet
 
-ENI Ecole souhaite disposer d'une solution lui permettant de suivre les résultats de ses élèves ainsi que de gérer les éventuels épreuves de rattrapage.
+ENI Ecole souhaite disposer d'une solution lui permettant de suivre les résultats de ses élèves ainsi que de gérer les éventuelles épreuves de rattrapage.
 
 Dans ce qui suit et les documents qui vous sont fournis, notre projet est appelé `Mark Manager`.
 
@@ -15,13 +15,13 @@ Dans ce qui suit et les documents qui vous sont fournis, notre projet est appel�
 .D'après l'expression de votre besoin que vous m'avez faite parvenir, voici les entités importantes que nous pouvons retenir:
 * Un résultat est compris entre 0 et 20.
 * Un résultat appartient à une matière et un élève.
-* Une matère a un coefficient.
+* Une matière a un coefficient.
 * Un résultat est donc pondéré par le coefficient de la matière auquel il est lié.
 * Un domaine regroupe plusieurs matières.
 
 == Données personnelles:
 
-Le projet étant nous amenant à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous ferons un point sur les enjeux et les réponsabilités du stockage et du traitements de ces données,
+Le projet étant nous amenant à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous ferons un point sur les enjeux et les réponsabilités du stockage et du traitement de ces données,
 car vous devez savoir que le règles imposées aujourd'hui par la CNIL en France vont être plus strictes à ce sujet le 25 mai prochain, conformément au règlement européen appelé GDPR.
 
 .Voici les règles métiers que j'ai retenues:
@@ -36,7 +36,7 @@ car vous devez savoir que le règles imposées aujourd'hui par la CNIL en France
 
 == Méthodologie de gestion de projet
 
-Pour garantir une solution logicielle de qualité et qui répond au mieux à vos besoins. Nous allons vivre le projet dans un contexte agile.
+Pour garantir une solution logicielle de qualité et qui répond au mieux à vos besoins, nous allons vivre le projet dans un contexte agile.
 
 Pour être plus précis, nous développerons en suivant une méthode Scrum avec une durée de sprint de 2 semaines.
 
@@ -60,7 +60,7 @@ Cela vous laisse le temps de recetter et moi de m'organiser dans le temps de con
 ** résultat obtenu au TOEIC (compris ente 0 et 990)
 * Gérer les repassages
 ** Planifier un rattrapage
-** Saisir la note obtenu lors du rattrapage
+** Saisir la note obtenue lors du rattrapage
 ** Remplacer la note initiale par la note obtenue suite au rattrapage
 * Envoyer la synthèse de résultats
 * Editer la synthèse de résultats
@@ -71,7 +71,7 @@ Chaque écran est relatif à un élève.
 
 ==== Synthèse de résultats
 
-Il s'agit de l'écran principal de l'application. Il doit ressembler le plus possible au document de synthèse de résultat que vous m'avez fourni en annexe, car c'est le format que vous êtes habituer de lire.
+Il s'agit de l'écran principal de l'application. Il doit ressembler le plus possible au document de synthèse de résultat que vous m'avez fourni en annexe, car c'est le format que vous êtes habitué à lire.
 
 En plus de reprendre la structure de la synthèse de résultat, cette vue permettra de mettre en évidence:
 * les domaines valides sur un fond vert
@@ -85,7 +85,7 @@ Vous pouvez également envoyer la synthèse par mail à l'élève en effectuant 
 
 === Rattrapages
 
-Il s'agit de présenter les épreuves de rattrapages planifiées pour l'élève.
+Il s'agit de présenter les épreuves de rattrapage planifiées pour l'élève.
 
 Les épreuves sont classées par date de passage dans l'ordre décroissant.
 
@@ -118,7 +118,7 @@ Cela nous permet de développer rapidement une application fonctionnelle brique 
 ==== Front end
 
 Pour gérer le développement front, nous utiliserons Webpack, qui permettra:
-* de transpiler le code Javascript et CSS dans une version compatilble avec les navigateurs ciblées par l'application
+* de transpiler le code Javascript et CSS dans une version compatilble avec les navigateurs ciblés par l'application
 * réaliser des optimisations au niveaux du poids des fichiers téléchargés sur le post client via des opérations de tree-shaking et de suppression de dead code.
 
 
@@ -191,7 +191,7 @@ Ce produit répond aux fonctionnalités principales pour un élève suivant la f
 * Saisir une notre obtenue suite au passage d'une épreuve de rattrapage
 * Envoyer la synthèse de résultats par mail
 
-Une fois que vous m'aurez fait parvenir vos retours quant à cette première itération du produit, nous pourrons décider ensemble quelles briques fonctionnelles nous ajoutons (la gestion d'élève suivant d'autres types de formation par exemple).
+Une fois que vous m'aurez fait parvenir vos retours quant à cette première itération du produit, nous pourrons décider ensemble quelles briques fonctionnelles nous ajouterons (la gestion des élèves suivant d'autres types de formation par exemple).
 
 == Propositions que nous pouvons envisager
 
