@@ -168,7 +168,7 @@ J'ai choisi le service Amazon SES car accessible gratuitement dans un premier te
 |editer la synthèse de résultats
 |14
 
-|==
+|===
 
 Si nous prenons 668 € H.T comme base pour 1 j.h, le coût total du projet reviendrait à 668 * 28 = 18 704 € H.T
 
