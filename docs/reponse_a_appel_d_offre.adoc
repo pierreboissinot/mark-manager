@@ -12,7 +12,8 @@ Dans ce qui suit et les documents qui vous sont fournis, notre projet est appel�
 
 == Compréhension du métier
 
-.D'après l'expression de votre besoin que vous m'avez faite parvenir, voici les entités importantes que nous pouvons retenir:
+D'après l'expression de votre besoin que vous m'avez faite parvenir, voici les entités importantes que nous pouvons retenir:
+
 * Un résultat est compris entre 0 et 20.
 * Un résultat appartient à une matière et un élève.
 * Une matière a un coefficient.
@@ -24,12 +25,14 @@ Dans ce qui suit et les documents qui vous sont fournis, notre projet est appel�
 Le projet étant nous amenant à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous ferons un point sur les enjeux et les responsabilités du stockage et du traitement de ces données,
 car vous devez savoir que les règles imposées aujourd'hui par la CNIL en France vont être plus strictes à ce sujet le 25 mai prochain, conformément au règlement européen appelé GDPR.
 
-.Voici les règles métiers que j'ai retenues:
+Voici les règles métiers que j'ai retenues:
+
 * Un domaine est invalide si une des notes est inférieure strictement à 7/20.
 * Un domaine est valide si toutes ses notes sont supérieures à 10/20 ou si toutes ses notes sont supérieures à 7/20 et que la moyenne du domaine est supérieure à 12.
 * Une note obtenue dans le cadre d'un rattrapage ne peut dépasser 12/20
 
-.Comportement attendu
+Comportement attendu:
+
 * Si un domaine est invalide, l'utilisateur propose un rattrapage au stagiaire.
 * Si une note est strictement inférieure à 7/20, l'utilisateur propose un rattrapage.
 
@@ -52,7 +55,7 @@ Cela vous laisse le temps de recetter et moi de m'organiser dans le temps de con
 
 === Périmètre
 
-.Fonctionnalités attendues:
+Fonctionnalités attendues:
 
 * Saisir les résultats, où nous pouvons différencier trois types de résultat
 ** résultat intial (compris entre 0 et 20)
@@ -74,6 +77,7 @@ Chaque écran est relatif à un élève.
 Il s'agit de l'écran principal de l'application. Il doit ressembler le plus possible au document de synthèse de résultat que vous m'avez fourni en annexe, car c'est le format que vous êtes habitué à lire.
 
 En plus de reprendre la structure de la synthèse de résultat, cette vue permettra de mettre en évidence:
+
 * les domaines valides sur un fond vert
 * les domaines invalides sur un fond rouge
 * les notes inférieures à 7 sur un fond rouge
@@ -101,6 +105,7 @@ Vous pouvez rapidement éditer une note ou bien en saisir une nouvelle.
 === Ergonomie
 
 Chaque vue de l'application comprend:
+
 * un menu horizontal en haut (identique sur chaque vue)
 * le contenu principal au centre
 * un menu vertical et contextuel à droite (dont les items sont pertinent par rapport au contenu)
@@ -111,6 +116,7 @@ Chaque vue de l'application comprend:
 
 Cette application sera développée en utilisant le framework Symfony, maintenu par une communauté active française de développeurs PHP.
 Cela nous permet de développer rapidement une application fonctionnelle brique par brique et sécurisée. Pour notre projet, Symfony offre les avantages suivant:
+
 * utilise un ORM, vous pouvez donc choisir le système de gestion de base de donnée de votre DSI par exemple.
 * utilise la librairie Monolog permettant de formater les logs applicatifs et de les rediriger vers la sortie que vous souhaitez.
 * utilise la librairie SwiftMailer permettant de choisir le service/serveur mail que vous souhaitez
@@ -118,6 +124,7 @@ Cela nous permet de développer rapidement une application fonctionnelle brique 
 ==== Front end
 
 Pour gérer le développement front, nous utiliserons Webpack, qui permettra:
+
 * de transpiler le code Javascript et CSS dans une version compatilble avec les navigateurs ciblés par l'application
 * réaliser des optimisations au niveaux du poids des fichiers téléchargés sur le post client via des opérations de tree-shaking et de suppression de dead code.
 
@@ -183,6 +190,7 @@ Pour arriver au résultat du produit final, j'estime un délai de 30 jours ouvr�
 Pour vous livrer une première version de la solution, j'ai été au plus simple du produit attendu, que j'ai appelé MVP0.
 
 Ce produit répond aux fonctionnalités principales pour un élève suivant la formation MS2I en alternance, à savoir:
+
 * Consulter les résultats
 * Consulter la synthèse de résultats
 * Consulter les rattrapages
