@@ -12,7 +12,7 @@ Dans ce qui suit et les documents qui vous sont fournis, notre projet est appel�
 
 == Compréhension du métier
 
-D'après l'expression de votre besoin que vous m'avez faite parvenir, voici les entités importantes que nous pouvons retenir:
+.D'après l'expression de votre besoin que vous m'avez faite parvenir, voici les entités importantes que nous pouvons retenir:
 * Un résultat est compris entre 0 et 20.
 * Un résultat appartient à une matière et un élève.
 * Une matère a un coefficient.
@@ -21,10 +21,10 @@ D'après l'expression de votre besoin que vous m'avez faite parvenir, voici les 
 
 == Données personnelles:
 
-Le projet étant amener à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous feront un point sur les enjeux et les réponsabilités du stockage et du traitements de ces données,
+Le projet étant nous amenant à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous ferons un point sur les enjeux et les réponsabilités du stockage et du traitements de ces données,
 car vous devez savoir que le règles imposées aujourd'hui par la CNIL en France vont être plus strictes à ce sujet le 25 mai prochain, conformément au règlement européen appelé GDPR.
 
-Voici les règles métiers que j'ai retenu:
+.Voici les règles métiers que j'ai retenues:
 * Un domaine est invalide si une des notes est inférieure strictement à 7/20.
 * Un domaine est valide si toutes ses notes sont supérieures à 10/20 ou si toutes ses notes sont supérieures à 7/20 et que la moyenne du domaine est supérieure à 12.
 * Une note obtenue dans le cadre d'un rattrapage ne peut dépasser 12/20
@@ -38,11 +38,11 @@ Voici les règles métiers que j'ai retenu:
 
 Pour garantir une solution logicielle de qualité et qui répond au mieux à vos besoins. Nous allons vivre le projet dans un contexte agile.
 
-Pour être plus précis, nous développerons en suivant la méthode Scrum avec une durée de sprint de 2 semaines.
+Pour être plus précis, nous développerons en suivant une méthode Scrum avec une durée de sprint de 2 semaines.
 
 C'est pourquoi nous devrons nous décider sur ce qu'est le MVP 1, le premier Minimum Viable Product.
 
-Ce MVP définit le périmètre de fonctionnalité sans lequelles le produit n'aurait aucun intérêt.
+Ce MVP définit le périmètre de fonctionnalités sans lequelles le produit n'aurait aucun intérêt.
 
 De plus, je recommande que nous désignons un Product Owner autre que vous, Mathieu, car vous avez un profil technique et je pense qu'il serait bon pour la solution d'être recettée aussi par une personne de ENI Ecole qui connaît le système de suivi des résultats des stagiaires. Il aura la responsabilité d'apporter la connaissance métier et de valider les livraisons lors des phases de recette.
 
@@ -64,13 +64,6 @@ Cela vous laisse le temps de recetter et moi de m'organiser dans le temps de con
 ** Remplacer la note initiale par la note obtenue suite au rattrapage
 * Envoyer la synthèse de résultats
 * Editer la synthèse de résultats
-
-== Solution envisagée
-
-Pour
-Cette application pourrait se connecter à vos données pour récupérer les informations des étudiants existantes au sein de votre école.
-
-=== Fonctionnalités
 
 === Ecrans
 
@@ -147,6 +140,38 @@ J'ai choisi le service Amazon SES car accessible gratuitement dans un premier te
 
 == Estimation des charges
 
+.Estimation des charges
+|===
+|Fonctionnalité |Charge (j.h)
+
+| saisir résultat intial
+|1
+
+| saisir résultat obtenu lors d'une épreuve de rattrapage
+|2
+
+| saisir le résultat obtenu au TOEIC
+|2
+
+|planifier un rattrapage
+|5
+
+|saisir la note obtenu lors du rattrapage
+|2
+
+|remplacer la note initiale par la note obtenue suite au rattrapage
+|1
+
+|envoyer la synthèse de résultats
+|1
+
+|editer la synthèse de résultats
+|14
+
+|==
+
+Si nous prenons 668 € H.T comme base pour 1 j.h, le coût total du projet reviendrait à 668 * 28 = 18 704 € H.T
+
 == Délais
 
 Si vous acceptez que nous construisions ce projet en suivant une méthode agile, brique par brique, nous pouvons décider d'arrêter le projet dès qu'il satisfait correctement vos besoins.
@@ -167,3 +192,9 @@ Ce produit répond aux fonctionnalités principales pour un élève suivant la f
 * Envoyer la synthèse de résultats par mail
 
 Une fois que vous m'aurez fait parvenir vos retours quant à cette première itération du produit, nous pourrons décider ensemble quelles briques fonctionnelles nous ajoutons (la gestion d'élève suivant d'autres types de formation par exemple).
+
+== Propositions que nous pouvons envisager
+
+Cette application pourrait se connecter à vos données pour récupérer les informations des étudiants existantes au sein de votre école.
+
+Nous pourrions prévoir une vue permettant à l'utilisateur de gérer les templates de mail (`envoi de la synthèse de résultats`, `convoquer à un rattrapage`).
