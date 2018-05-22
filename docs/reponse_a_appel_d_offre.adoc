@@ -21,8 +21,8 @@ Dans ce qui suit et les documents qui vous sont fournis, notre projet est appel�
 
 == Données personnelles:
 
-Le projet étant nous amenant à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous ferons un point sur les enjeux et les réponsabilités du stockage et du traitement de ces données,
-car vous devez savoir que le règles imposées aujourd'hui par la CNIL en France vont être plus strictes à ce sujet le 25 mai prochain, conformément au règlement européen appelé GDPR.
+Le projet étant nous amenant à traiter des données personnelles, notamment celle de l'élève (nom, prénom, email), nous ferons un point sur les enjeux et les responsabilités du stockage et du traitement de ces données,
+car vous devez savoir que les règles imposées aujourd'hui par la CNIL en France vont être plus strictes à ce sujet le 25 mai prochain, conformément au règlement européen appelé GDPR.
 
 .Voici les règles métiers que j'ai retenues:
 * Un domaine est invalide si une des notes est inférieure strictement à 7/20.
@@ -144,22 +144,22 @@ J'ai choisi le service Amazon SES car accessible gratuitement dans un premier te
 |===
 |Fonctionnalité |Charge (j.h)
 
-| saisir résultat intial
+| saisir un résultat intial
 |1
 
-| saisir résultat obtenu lors d'une épreuve de rattrapage
+| saisir un résultat obtenu lors d'une épreuve de rattrapage
 |2
 
-| saisir le résultat obtenu au TOEIC
+| saisir un résultat obtenu au TOEIC
 |2
 
 |planifier un rattrapage
 |5
 
-|saisir la note obtenu lors du rattrapage
+|saisir une note obtenu lors du rattrapage
 |2
 
-|remplacer la note initiale par la note obtenue suite au rattrapage
+|remplacer une note initiale par la note obtenue suite au rattrapage
 |1
 
 |envoyer la synthèse de résultats
