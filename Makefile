@@ -16,3 +16,7 @@ encore:
 
 install:
 	$(NODE) yarn
+
+dossier:
+	asciidoctor-pdf docs/*.adoc
+	zip -j BOISSINOT\ Pierre\ –\ Dossier\ RAO.zip docs/*.pdf
